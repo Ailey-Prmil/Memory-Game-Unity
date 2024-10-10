@@ -22,45 +22,45 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //if (coroutineAllowed)
-        //{
-        //    StartCoroutine(RotateCard());
-        //}
-        Debug.Log("Button clicked!");
+        if (coroutineAllowed)
+        {
+            StartCoroutine(RotateCard());
+        }
+
     }
 
-    //private IEnumerator RotateCard()
-    //{
-    //    coroutineAllowed = false;
+    private IEnumerator RotateCard()
+    {
+        coroutineAllowed = false;
 
-    //    if (!faceUp)
-    //    {
-    //        for (float i = 0f; i <= 180f; i += 10f)
-    //        {
-    //            transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
-    //            if (i == 90f)
-    //            {
-    //                rend.sprite = faceSpriteFruitCard_1;
-    //            }
-    //            yield return new WaitForSeconds(0.03f);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        for (float i = 180f; i >= 0f; i -= 10f)
-    //        {
-    //            transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
-    //            if (i == 90f)
-    //            {
-    //                rend.sprite = Cardback;
-    //            }
-    //            yield return new WaitForSeconds(0.03f);
-    //        }
-    //    }
+        if (!faceUp)
+        {
+            for (float i = 0f; i <= 180f; i += 10f)
+            {
+                transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
+                if (i == 90f)
+                {
+                    rend.sprite = faceSpriteFruitCard_1;
+                }
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
+        else
+        {
+            for (float i = 180f; i >= 0f; i -= 10f)
+            {
+                transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
+                if (i == 90f)
+                {
+                    rend.sprite = Cardback;
+                }
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
 
-    //    coroutineAllowed = true;
-    //    faceUp = !faceUp;
-    //}
+        coroutineAllowed = true;
+        faceUp = !faceUp;
+    }
 
     void Update()
     {
