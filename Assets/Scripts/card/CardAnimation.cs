@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using System;
 
-public class Card : MonoBehaviour
+public class CardAnimation : MonoBehaviour
 {
     private SpriteRenderer rend;
     [SerializeField]
