@@ -1,0 +1,1386 @@
+fileFormatVersion: 2
+guid: 23fcf01a86526914e8814ecfe0190089
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 2
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: game ui jelly honey_0
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 3776
+        width: 394
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d25d27743c4fa4f8f311872661ea01
+      internalID: 674192665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_1
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 3762
+        width: 421
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb4e090aa043924483f62e12ac16d1f
+      internalID: 684651851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_2
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 3762
+        width: 423
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c03758bee62f845a2f233e84f2c571
+      internalID: 219752913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_3
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 3762
+        width: 1219
+        height: 497
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e917873fc0bef3b4d89b7dabff1e2028
+      internalID: 1667432892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_4
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 3762
+        width: 422
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96b161c23897c44aa4837bdacc50c1a
+      internalID: 1644679403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_5
+      rect:
+        serializedVersion: 2
+        x: 2697
+        y: 3749
+        width: 422
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879083c321248454dbbe2a9052ae1855
+      internalID: -663989610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_6
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 3716
+        width: 424
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3badf9bf4a2d3b548b6ac53b2cf43b7f
+      internalID: -915279199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_7
+      rect:
+        serializedVersion: 2
+        x: 3746
+        y: 3730
+        width: 424
+        height: 421
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e5170bf831b10944ad396eb19aef073
+      internalID: 1045226810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_8
+      rect:
+        serializedVersion: 2
+        x: 4255
+        y: 3703
+        width: 423
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dd145f1cc6c19428f85e8ed88bb561
+      internalID: -775957019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_9
+      rect:
+        serializedVersion: 2
+        x: 4780
+        y: 3676
+        width: 435
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feeb6d39d0b1af241ac9c22a68efea0c
+      internalID: 1178156557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1891
+        width: 1339
+        height: 1715
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb11861eefb6bea42817ae40125dad9a
+      internalID: -713267821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_11
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 3353
+        width: 858
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0b7ce2486e6164894914465d192aac
+      internalID: -1595967955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_12
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 3351
+        width: 857
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8445ebbf5772a4dafd805c28c9be39
+      internalID: -346757983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_13
+      rect:
+        serializedVersion: 2
+        x: 3283
+        y: 3249
+        width: 423
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fda33a93468a743a4001622bd83c51
+      internalID: -914701925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_14
+      rect:
+        serializedVersion: 2
+        x: 3793
+        y: 3210
+        width: 424
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f75449531fc0b40ae2af95a31481eb
+      internalID: 603082108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_15
+      rect:
+        serializedVersion: 2
+        x: 4295
+        y: 3262
+        width: 1044
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c64644c726d2c74ba57a13a694c192e
+      internalID: 1210413276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_16
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 2921
+        width: 857
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2b5d9618d6694499211220666ff383
+      internalID: -1261383296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_17
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 2936
+        width: 857
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4863ef1c74ae4b340bb5732707db9223
+      internalID: 1567488971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_18
+      rect:
+        serializedVersion: 2
+        x: 3617
+        y: 2436
+        width: 1233
+        height: 625
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5306d47b3068bb849b539769b4d266fe
+      internalID: 1102114396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_19
+      rect:
+        serializedVersion: 2
+        x: 4949
+        y: 2803
+        width: 279
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc5577a7c0c83e4b8c49fa79203bcc8
+      internalID: -1506518543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_20
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 2470
+        width: 941
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594af2700e6983049a57a2fce8461585
+      internalID: -2093315446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_21
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 2472
+        width: 487
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9c52fd884343340bdd798fecad855f
+      internalID: 1147923462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_22
+      rect:
+        serializedVersion: 2
+        x: 3044
+        y: 2496
+        width: 484
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b682df12386a99d4eb4fff94fe80362b
+      internalID: 1499237941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_23
+      rect:
+        serializedVersion: 2
+        x: 4936
+        y: 2425
+        width: 310
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221a9508f8c63944dab5d6936fad7a94
+      internalID: 42519322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_24
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 1883
+        width: 1593
+        height: 464
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4fd1c65601a854da1c1f77f4a3a452
+      internalID: -1026083386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_25
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 1888
+        width: 1390
+        height: 457
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749526556e83e1c4182e7ab79a31bfdb
+      internalID: -1219990447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_26
+      rect:
+        serializedVersion: 2
+        x: 4944
+        y: 1985
+        width: 279
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8173a0f2da993d94ca20adc6edea3f2b
+      internalID: 2032592327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_27
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1645
+        width: 1421
+        height: 134
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 92, y: 20, z: 77, w: 20}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90b970091a25ffe45b8d1c3f48ca0774
+      internalID: -935294663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_28
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 523
+        width: 1003
+        height: 1256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb2f6cc359b7b742a7b760314046356
+      internalID: -1739848180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_29
+      rect:
+        serializedVersion: 2
+        x: 2937
+        y: 1226
+        width: 1389
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d09cfc1bc9e8cd49baef8b72c629dd4
+      internalID: 618467184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_30
+      rect:
+        serializedVersion: 2
+        x: 4968
+        y: 1602
+        width: 310
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b428d3b047d884c93b7ba4f9c5f5b6
+      internalID: -2074823897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_31
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1416
+        width: 1411
+        height: 134
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 77, y: 32, z: 79, w: 32}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc340cc043b73e4d8249fec08920ec9
+      internalID: -1283144387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_32
+      rect:
+        serializedVersion: 2
+        x: 4355
+        y: 1159
+        width: 876
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739c55bd37b3e8848934ed9621536be7
+      internalID: -251132334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_33
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 718
+        width: 1744
+        height: 506
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77680aa4aba76d4dbced20defd0142a
+      internalID: 949442282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_34
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 619
+        width: 1379
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41609cf65174794439d8ef3d9a24ab4e
+      internalID: -1180565793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_35
+      rect:
+        serializedVersion: 2
+        x: 4691
+        y: 781
+        width: 310
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9dc3ec75375c914c8da1d93a19a726e
+      internalID: 282654959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_36
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 103
+        width: 1343
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca35bee128e9aa4b921d64e50f1a8dd
+      internalID: 1014758651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_37
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 0
+        width: 1379
+        height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c15eaf90a54ac524ca34607e27668cba
+      internalID: -1842350696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_38
+      rect:
+        serializedVersion: 2
+        x: 3158
+        y: 12
+        width: 1379
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc71e793090d504284714f947882572
+      internalID: -793636710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_39
+      rect:
+        serializedVersion: 2
+        x: 4399
+        y: 444
+        width: 279
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5079a88055711e469b0c13d81b815d0
+      internalID: -1146201462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_40
+      rect:
+        serializedVersion: 2
+        x: 5020
+        y: 444
+        width: 281
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b069250c3d710794b87ca1f04bd163da
+      internalID: -1115063985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game ui jelly honey_41
+      rect:
+        serializedVersion: 2
+        x: 4691
+        y: 137
+        width: 310
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab28da074c394b44bbbde057f8df845
+      internalID: -354828108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -860.2881, y: -1673.3647}
+      - {x: -977.6001, y: -1683.7906}
+      - {x: -977.6001, y: -2027.8469}
+      - {x: -870.7158, y: -2129.5}
+      - {x: 354.54297, y: -2129.5}
+      - {x: 409.28857, y: -2059.1248}
+      - {x: 409.28857, y: -1681.1842}
+      - {x: 404.0747, y: -1673.3647}
+    - - {x: 500.53125, y: -1657.7258}
+      - {x: 484.88965, y: -1673.3647}
+      - {x: 484.88965, y: -2043.4858}
+      - {x: 537.0283, y: -2121.6804}
+      - {x: 1738.8247, y: -2121.6804}
+      - {x: 1871.7783, y: -2077.37}
+      - {x: 1871.7783, y: -1657.7258}
+    - - {x: -2460.9453, y: -1579.5312}
+      - {x: -2460.9453, y: -1975.7173}
+      - {x: -2419.2344, y: -2030.4535}
+      - {x: -1120.9814, y: -2030.4535}
+      - {x: -1110.5537, y: -1960.0784}
+      - {x: -1110.5537, y: -1579.5312}
+    - - {x: 2056.8706, y: -1707.249}
+      - {x: 2017.7666, y: -1725.4945}
+      - {x: 2017.7666, y: -1832.3605}
+      - {x: 2085.5469, y: -1954.8654}
+      - {x: 2155.934, y: -1996.5691}
+      - {x: 2239.356, y: -1996.5691}
+      - {x: 2335.8125, y: -1858.4253}
+      - {x: 2335.8125, y: -1743.7399}
+      - {x: 2314.957, y: -1707.249}
+    - - {x: 1876.9922, y: -1368.4058}
+      - {x: 1725.79, y: -1470.0587}
+      - {x: 1725.79, y: -1584.7441}
+      - {x: 1751.8594, y: -1626.448}
+      - {x: 1895.2407, y: -1689.0037}
+      - {x: 1996.9111, y: -1689.0037}
+      - {x: 2012.5527, y: -1670.7582}
+      - {x: 2012.5527, y: -1368.4058}
+    - - {x: 2460.9453, y: -1368.4058}
+      - {x: 2356.668, y: -1368.4058}
+      - {x: 2346.2402, y: -1389.2577}
+      - {x: 2346.2402, y: -1689.0037}
+      - {x: 2604.3267, y: -1689.0037}
+      - {x: 2635.6099, y: -1626.448}
+      - {x: 2635.6099, y: -1493.5171}
+      - {x: 2586.0781, y: -1399.6836}
+    - - {x: -810.75635, y: -346.66278}
+      - {x: -810.75635, y: -1610.8091}
+      - {x: 200.73389, y: -1610.8091}
+      - {x: 200.73389, y: -377.94064}
+      - {x: 190.30615, y: -346.66278}
+    - - {x: 1624.1196, y: -1050.4143}
+      - {x: 419.7163, y: -1050.4143}
+      - {x: 357.1499, y: -1180.7386}
+      - {x: 357.1499, y: -1443.9939}
+      - {x: 432.75098, y: -1514.369}
+      - {x: 1650.189, y: -1514.369}
+      - {x: 1728.397, y: -1449.2068}
+      - {x: 1744.0386, y: -1376.2252}
+      - {x: 1744.0386, y: -1139.0349}
+    - - {x: -2489.6216, y: -901.84454}
+      - {x: -2612.1475, y: -977.4327}
+      - {x: -2612.1475, y: -1256.3268}
+      - {x: -2596.5059, y: -1331.9149}
+      - {x: -2513.084, y: -1415.3225}
+      - {x: -860.2881, y: -1415.3225}
+      - {x: -860.2881, y: -940.94183}
+      - {x: -899.3921, y: -901.84454}
+    - - {x: 2226.3213, y: -1060.8402}
+      - {x: 2155.934, y: -1060.8402}
+      - {x: 2041.229, y: -1120.7894}
+      - {x: 2017.7666, y: -1204.197}
+      - {x: 2017.7666, y: -1352.7668}
+      - {x: 2286.2808, y: -1352.7668}
+      - {x: 2335.8125, y: -1324.0955}
+      - {x: 2335.8125, y: -1204.197}
+      - {x: 2314.957, y: -1136.4283}
+    - - {x: 1728.397, y: -654.2283}
+      - {x: 1681.4722, y: -695.93207}
+      - {x: 1681.4722, y: -909.664}
+      - {x: 1733.6108, y: -974.8262}
+      - {x: 2500.0493, y: -974.8262}
+      - {x: 2565.2227, y: -896.6316}
+      - {x: 2565.2227, y: -732.42285}
+      - {x: 2528.7256, y: -654.2283}
+    - - {x: 271.1211, y: -443.1028}
+      - {x: 263.3003, y: -469.1677}
+      - {x: 263.3003, y: -888.81213}
+      - {x: 281.54883, y: -907.0575}
+      - {x: 1603.2642, y: -907.0575}
+      - {x: 1660.6167, y: -904.45105}
+      - {x: 1660.6167, y: -443.1028}
+    - - {x: -2460.9453, y: -573.4272}
+      - {x: -2513.084, y: -583.8531}
+      - {x: -2513.084, y: -701.145}
+      - {x: -2507.87, y: -721.99695}
+      - {x: -1105.3398, y: -721.99695}
+      - {x: -1084.4844, y: -682.8996}
+      - {x: -1084.4844, y: -609.91797}
+      - {x: -1120.9814, y: -573.4272}
+    - - {x: 2593.899, y: -242.4033}
+      - {x: 2346.2402, y: -242.4033}
+      - {x: 2294.1016, y: -258.04224}
+      - {x: 2294.1016, y: -388.36658}
+      - {x: 2411.4136, y: -531.7234}
+      - {x: 2505.2632, y: -531.7234}
+      - {x: 2606.9336, y: -440.4963}
+      - {x: 2612.1475, y: -401.39902}
+      - {x: 2612.1475, y: -250.22276}
+    - - {x: -2518.2979, y: -346.66278}
+      - {x: -2518.2979, y: -492.62607}
+      - {x: -1089.6982, y: -492.62607}
+      - {x: -1089.6982, y: -346.66278}
+    - - {x: 492.71045, y: 218.94492}
+      - {x: 456.21338, y: 221.5514}
+      - {x: -1027.1318, y: 221.5514}
+      - {x: -1040.1665, y: 166.81517}
+      - {x: -1040.1665, y: -250.22276}
+      - {x: 560.4907, y: -250.22276}
+      - {x: 560.4907, y: 96.440025}
+      - {x: 537.0283, y: 156.38922}
+    - - {x: 724.72754, y: 218.94492}
+      - {x: 703.8721, y: 166.81517}
+      - {x: 703.8721, y: -226.76437}
+      - {x: 740.36914, y: -245.0098}
+      - {x: 2059.4775, y: -245.0098}
+      - {x: 2101.1885, y: -216.33842}
+      - {x: 2101.1885, y: 166.81517}
+      - {x: 2085.5469, y: 218.94492}
+    - - {x: -2513.084, y: 1480.4846}
+      - {x: -2575.6504, y: 1344.9474}
+      - {x: -2575.6504, y: -125.11138}
+      - {x: -2552.188, y: -213.73195}
+      - {x: -2239.356, y: -242.4033}
+      - {x: -1525.0562, y: -242.4033}
+      - {x: -1326.9292, y: -158.99571}
+      - {x: -1326.9292, y: 1243.2943}
+      - {x: -1381.6748, y: 1480.4846}
+    - - {x: 2546.974, y: 172.02815}
+      - {x: 2395.772, y: 172.02815}
+      - {x: 2270.6392, y: 67.76866}
+      - {x: 2270.6392, y: -39.097305}
+      - {x: 2356.668, y: -140.7503}
+      - {x: 2395.772, y: -148.56976}
+      - {x: 2528.7256, y: -148.56976}
+      - {x: 2557.4019, y: -96.440025}
+      - {x: 2557.4019, y: 106.865974}
+      - {x: 2552.188, y: 169.42166}
+    - - {x: 2341.0264, y: 583.8531}
+      - {x: 2262.8184, y: 437.88983}
+      - {x: 2262.8184, y: 291.92654}
+      - {x: 2541.7603, y: 291.92654}
+      - {x: 2580.8643, y: 299.74603}
+      - {x: 2580.8643, y: 440.4963}
+      - {x: 2476.587, y: 583.8531}
+    - - {x: 943.70996, y: 935.7289}
+      - {x: 943.70996, y: 456.13525}
+      - {x: 1149.6577, y: 302.3525}
+      - {x: 2075.1191, y: 302.3525}
+      - {x: 2184.6104, y: 463.9547}
+      - {x: 2184.6104, y: 935.7289}
+    - - {x: -396.2539, y: 656.8348}
+      - {x: -1235.6865, y: 656.8348}
+      - {x: -1259.1489, y: 612.5245}
+      - {x: -1259.1489, y: 375.33414}
+      - {x: -1251.3281, y: 336.23685}
+      - {x: -344.11523, y: 336.23685}
+      - {x: -310.2251, y: 424.8574}
+      - {x: -310.2251, y: 547.3623}
+      - {x: -351.93604, y: 625.5569}
+    - - {x: -54.745605, y: 703.7515}
+      - {x: -190.30615, y: 630.7699}
+      - {x: -195.52002, y: 599.49207}
+      - {x: -195.52002, y: 463.9547}
+      - {x: -96.45654, y: 359.69522}
+      - {x: -39.104004, y: 338.84332}
+      - {x: 119.918945, y: 338.84332}
+      - {x: 299.79736, y: 450.92227}
+      - {x: 299.79736, y: 695.93207}
+      - {x: 278.9419, y: 703.7515}
+    - - {x: 516.17285, y: 727.2099}
+      - {x: 370.18457, y: 682.8996}
+      - {x: 370.18457, y: 448.3158}
+      - {x: 508.35205, y: 362.3017}
+      - {x: 763.83154, y: 362.3017}
+      - {x: 862.895, y: 443.1028}
+      - {x: 862.895, y: 706.35803}
+      - {x: 855.0742, y: 727.2099}
+    - - {x: 2411.4136, y: 990.4651}
+      - {x: 2291.4946, y: 990.4651}
+      - {x: 2275.853, y: 935.7289}
+      - {x: 2275.853, y: 690.71906}
+      - {x: 2283.6738, y: 680.29315}
+      - {x: 2317.564, y: 669.8672}
+      - {x: 2424.4482, y: 669.8672}
+      - {x: 2562.6157, y: 761.09424}
+      - {x: 2562.6157, y: 870.5667}
+      - {x: 2479.1938, y: 951.3678}
+    - - {x: -508.35205, y: 1133.8219}
+      - {x: -1053.2012, y: 1133.8219}
+      - {x: -1253.935, y: 1079.0857}
+      - {x: -1253.935, y: 789.7656}
+      - {x: -1251.3281, y: 787.1591}
+      - {x: -479.67578, y: 787.1591}
+      - {x: -401.46777, y: 789.7656}
+      - {x: -388.4331, y: 792.3721}
+      - {x: -388.4331, y: 953.9743}
+      - {x: -487.49658, y: 1126.0024}
+    - - {x: 401.46777, y: 1146.8544}
+      - {x: -119.918945, y: 1146.8544}
+      - {x: -291.97656, y: 1060.8402}
+      - {x: -291.97656, y: 802.79803}
+      - {x: 573.5254, y: 802.79803}
+      - {x: 573.5254, y: 961.79376}
+      - {x: 461.42725, y: 1110.3635}
+    - - {x: 1178.334, y: 1506.5496}
+      - {x: 1118.3745, y: 1480.4846}
+      - {x: 1118.3745, y: 1112.97}
+      - {x: 1154.8716, y: 1076.4791}
+      - {x: 1488.5591, y: 1076.4791}
+      - {x: 1551.1255, y: 1099.9376}
+      - {x: 1551.1255, y: 1449.2068}
+      - {x: 1439.0273, y: 1506.5496}
+    - - {x: 669.98193, y: 1545.6469}
+      - {x: 610.02246, y: 1514.369}
+      - {x: 610.02246, y: 1235.4749}
+      - {x: 701.26514, y: 1115.5765}
+      - {x: 972.3862, y: 1115.5765}
+      - {x: 1040.1665, y: 1159.8867}
+      - {x: 1040.1665, y: 1438.7809}
+      - {x: 993.2417, y: 1545.6469}
+    - - {x: 1720.5762, y: 1457.0262}
+      - {x: 1676.2583, y: 1441.3873}
+      - {x: 1621.5127, y: 1352.7668}
+      - {x: 1621.5127, y: 1238.0814}
+      - {x: 1663.2236, y: 1133.8219}
+      - {x: 1736.2178, y: 1128.6089}
+      - {x: 2606.9336, y: 1128.6089}
+      - {x: 2669.5, y: 1185.9517}
+      - {x: 2669.5, y: 1376.2252}
+      - {x: 2601.7197, y: 1457.0262}
+    - - {x: -333.6875, y: 1217.2295}
+      - {x: 531.81445, y: 1217.2295}
+      - {x: 531.81445, y: 1470.0587}
+      - {x: 500.53125, y: 1563.8922}
+      - {x: -198.12695, y: 1563.8922}
+      - {x: -333.6875, y: 1394.4706}
+    - - {x: -1094.9121, y: 1563.8922}
+      - {x: -1285.2183, y: 1404.8966}
+      - {x: -1285.2183, y: 1219.8359}
+      - {x: -445.78564, y: 1219.8359}
+      - {x: -419.7163, y: 1227.6554}
+      - {x: -419.7163, y: 1368.4058}
+      - {x: -547.45605, y: 1563.8922}
+    - - {x: 2158.541, y: 1973.1107}
+      - {x: 2106.4023, y: 1876.6708}
+      - {x: 2106.4023, y: 1636.8739}
+      - {x: 2187.2173, y: 1548.2533}
+      - {x: 2202.859, y: 1543.0404}
+      - {x: 2416.6274, y: 1543.0404}
+      - {x: 2492.2285, y: 1550.8599}
+      - {x: 2549.581, y: 1600.383}
+      - {x: 2549.581, y: 1871.4578}
+      - {x: 2523.5117, y: 1973.1107}
+    - - {x: 1650.189, y: 1999.1757}
+      - {x: 1579.8018, y: 1962.6848}
+      - {x: 1579.8018, y: 1618.6285}
+      - {x: 1660.6167, y: 1569.1052}
+      - {x: 1970.8418, y: 1569.1052}
+      - {x: 2012.5527, y: 1602.9896}
+      - {x: 2012.5527, y: 1910.555}
+      - {x: 1968.2349, y: 1999.1757}
+    - - {x: 881.14355, y: 2012.208}
+      - {x: 570.91846, y: 2012.208}
+      - {x: 534.4214, y: 1975.7173}
+      - {x: 534.4214, y: 1694.2167}
+      - {x: 596.9878, y: 1582.1377}
+      - {x: 899.3921, y: 1582.1377}
+      - {x: 915.0337, y: 1587.3507}
+      - {x: 967.17236, y: 1660.3323}
+      - {x: 967.17236, y: 1861.0317}
+      - {x: 954.1377, y: 1941.8329}
+    - - {x: 1084.4844, y: 2025.2405}
+      - {x: 1071.4497, y: 1999.1757}
+      - {x: 1071.4497, y: 1720.2815}
+      - {x: 1115.7676, y: 1595.1702}
+      - {x: 1415.565, y: 1595.1702}
+      - {x: 1504.2007, y: 1623.8414}
+      - {x: 1504.2007, y: 2025.2405}
+    - - {x: 65.17334, y: 2046.0924}
+      - {x: 23.462402, y: 1960.0784}
+      - {x: 23.462402, y: 1665.5453}
+      - {x: 75.601074, y: 1616.022}
+      - {x: 364.9707, y: 1616.022}
+      - {x: 453.60645, y: 1639.4803}
+      - {x: 453.60645, y: 1934.0134}
+      - {x: 378.00537, y: 2046.0924}
+    - - {x: -1999.5181, y: 2059.1248}
+      - {x: -1999.5181, y: 1748.9529}
+      - {x: -1900.4546, y: 1629.0544}
+      - {x: -1639.7612, y: 1629.0544}
+      - {x: -1569.374, y: 1644.6934}
+      - {x: -1569.374, y: 2059.1248}
+    - - {x: -1394.7095, y: 2059.1248}
+      - {x: -1485.9521, y: 2004.3885}
+      - {x: -1498.9868, y: 1944.4393}
+      - {x: -1498.9868, y: 1746.3463}
+      - {x: -1452.062, y: 1642.0869}
+      - {x: -1384.2817, y: 1629.0544}
+      - {x: -1141.8369, y: 1629.0544}
+      - {x: -1066.2358, y: 1722.888}
+      - {x: -1066.2358, y: 2004.3885}
+      - {x: -1183.5479, y: 2059.1248}
+    - - {x: -985.4209, y: 2059.1248}
+      - {x: -1003.66943, y: 2001.7821}
+      - {x: -1003.66943, y: 1675.9712}
+      - {x: -956.7446, y: 1629.0544}
+      - {x: -576.1323, y: 1629.0544}
+      - {x: -573.5254, y: 1634.2675}
+      - {x: -573.5254, y: 1978.3237}
+      - {x: -610.02246, y: 2059.1248}
+    - - {x: -114.70508, y: 2059.1248}
+      - {x: -461.42725, y: 2059.1248}
+      - {x: -482.2827, y: 1991.3562}
+      - {x: -482.2827, y: 1678.5778}
+      - {x: -383.21924, y: 1629.0544}
+      - {x: -159.02295, y: 1629.0544}
+      - {x: -57.35254, y: 1691.6101}
+      - {x: -52.13867, y: 1720.2815}
+      - {x: -52.13867, y: 1952.2588}
+    - - {x: -2539.1533, y: 2043.4858}
+      - {x: -2539.1533, y: 1642.0869}
+      - {x: -2145.5063, y: 1642.0869}
+      - {x: -2137.6855, y: 1647.2998}
+      - {x: -2137.6855, y: 2043.4858}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      game ui jelly honey_0: 674192665
+      game ui jelly honey_1: 684651851
+      game ui jelly honey_10: -713267821
+      game ui jelly honey_11: -1595967955
+      game ui jelly honey_12: -346757983
+      game ui jelly honey_13: -914701925
+      game ui jelly honey_14: 603082108
+      game ui jelly honey_15: 1210413276
+      game ui jelly honey_16: -1261383296
+      game ui jelly honey_17: 1567488971
+      game ui jelly honey_18: 1102114396
+      game ui jelly honey_19: -1506518543
+      game ui jelly honey_2: 219752913
+      game ui jelly honey_20: -2093315446
+      game ui jelly honey_21: 1147923462
+      game ui jelly honey_22: 1499237941
+      game ui jelly honey_23: 42519322
+      game ui jelly honey_24: -1026083386
+      game ui jelly honey_25: -1219990447
+      game ui jelly honey_26: 2032592327
+      game ui jelly honey_27: -935294663
+      game ui jelly honey_28: -1739848180
+      game ui jelly honey_29: 618467184
+      game ui jelly honey_3: 1667432892
+      game ui jelly honey_30: -2074823897
+      game ui jelly honey_31: -1283144387
+      game ui jelly honey_32: -251132334
+      game ui jelly honey_33: 949442282
+      game ui jelly honey_34: -1180565793
+      game ui jelly honey_35: 282654959
+      game ui jelly honey_36: 1014758651
+      game ui jelly honey_37: -1842350696
+      game ui jelly honey_38: -793636710
+      game ui jelly honey_39: -1146201462
+      game ui jelly honey_4: 1644679403
+      game ui jelly honey_40: -1115063985
+      game ui jelly honey_41: -354828108
+      game ui jelly honey_5: -663989610
+      game ui jelly honey_6: -915279199
+      game ui jelly honey_7: 1045226810
+      game ui jelly honey_8: -775957019
+      game ui jelly honey_9: 1178156557
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
