@@ -18,9 +18,10 @@ public class SettingPanelExitButtonScript : MonoBehaviour
     // Method to deactivate the Settings Canvas
     void ExitCanvas()
     {
+        gameObject.SetActive(false);
         mainCanvas.blocksRaycasts = true;
         mainCanvas.interactable = true;
-        gameObject.SetActive(false);
+        
     }
 
     void OpenCanvas()
