@@ -4,6 +4,7 @@ using System.Numerics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CardAnimation : MonoBehaviour
 {
@@ -19,20 +20,18 @@ public class CardAnimation : MonoBehaviour
         coroutineAllowed = true;
         faceUp = false;
     }
-
-    private void OnMouseDown()
+    private void OnMouseDown() // Detects click directly on the card
     {
         if (coroutineAllowed)
         {
             StartCoroutine(RotateCard());
         }
-
     }
+
 
     private IEnumerator RotateCard()
     {
         coroutineAllowed = false;
-
         if (!faceUp)
         {
             for (float i = 0f; i <= 180f; i += 10f)
@@ -57,12 +56,10 @@ public class CardAnimation : MonoBehaviour
                 yield return new WaitForSeconds(0.03f);
             }
         }
-
+            
         coroutineAllowed = true;
         faceUp = !faceUp;
-    }
 
-    void Update()
-    {
+
     }
 }
