@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 
-public class CardGrid : MonoBehaviour
+public class CardGrid : MonoBehaviour, ICardObserver
 {
     public int Dimension;
     public GameObject CardPrefab;
     public List<Card> Cards = new List<Card>();
     public List<Card> OpenCards = new List<Card>(2);
-    public List<Sprite> CardFace = new List<Sprite>();
+    public List<Sprite> CardFaces = new List<Sprite>();
     private GridLayoutGroup gridLayoutGroup;
     private float CardSize;
     private float GridWidth, GridHeight, XOffset, YOffset;
@@ -27,19 +28,11 @@ public class CardGrid : MonoBehaviour
         FormCardGrid();
         InitializeCardFaces(GameManager.Instance.SpriteCollection);
         AddCard();
-        GetCard();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetCard();
     }
 
     void FormCardGrid()
@@ -56,15 +49,6 @@ public class CardGrid : MonoBehaviour
         gridLayoutGroup.padding = new RectOffset((int)Padding, (int)Padding, (int)Padding, (int)Padding);
     }
 
-    void AddCard()
-    {
-        for (int i = 0; i < Dimension*Dimension; i++)
-        {
-            GameObject card = Instantiate(CardPrefab, GetComponent<RectTransform>(), false);
-            card.name = "Card-" + i;
-        }
-    }
-
     void InitializeCardFaces(List<Sprite> spriteCollection)
     {
         spriteCollection = ShuffleCardFaces(spriteCollection);
@@ -72,10 +56,10 @@ public class CardGrid : MonoBehaviour
         {
             for (int i = 0; i < (Dimension * Dimension) / 2; i++)
             {
-                CardFace.Add(spriteCollection[i]);
+                CardFaces.Add(spriteCollection[i]);
             }
         }
-        CardFace = ShuffleCardFaces(CardFace);
+        CardFaces = ShuffleCardFaces(CardFaces);
     }
 
     List<Sprite> ShuffleCardFaces(List<Sprite> list)
@@ -91,13 +75,57 @@ public class CardGrid : MonoBehaviour
         return list;
     }
 
+    void AddCard()
+    {
+        for (int i = 0; i < Dimension * Dimension; i++)
+        {
+            GameObject card = Instantiate(CardPrefab, GetComponent<RectTransform>(), false);
+            card.name = "Card-" + i;
+        }
+    }
+
     void GetCard()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Card");
         for (int i = 0; i < objects.Length; i++)
         {
             Cards.Add(objects[i].GetComponent<Card>());
-            Cards[i].SetCard(i, CardFace[i], CardSize);
+            Cards[i].SetCard(i, CardFaces[i], CardSize);
+            Cards[i].AddObserver(this);
         }
     }
+    void CheckPair(Card firstCard, Card secondCard)
+    {
+        if (firstCard == secondCard)
+        {
+            firstCard.MatchCard();
+            secondCard.MatchCard();
+        }
+        else
+        {
+            firstCard.CloseCard();
+            secondCard.CloseCard();
+        }
+        OpenCards.Clear();
+    }
+
+    void ICardObserver.OnCardFlipped(Card card)
+    {
+        if (card.State != Card.CardState.Visible)
+        {
+            return;
+        }
+        // Only run the card is flipped open
+        if (OpenCards.Count < 2)
+        {
+            OpenCards.Add(card);
+        }
+        if (OpenCards.Count == 2)
+        {
+            Card firstCard = OpenCards[0];
+            Card secondCard = OpenCards[1];
+            CheckPair(firstCard, secondCard);
+        }
+    }
+
 }

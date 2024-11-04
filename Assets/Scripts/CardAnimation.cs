@@ -23,17 +23,30 @@ public class CardAnimation : MonoBehaviour
         coroutineAllowed = true;
         faceUp = false;
     }
+
     private void OnMouseDown() // Detects click directly on the card
+    {
+        OpenCard();
+    }
+
+    public void FlipCard() // Detects click on the button
     {
         if (coroutineAllowed)
         {
-            StartCoroutine(RotateCard());
+            StartCoroutine(RotateCard(() => { faceUp = !faceUp; OnCardFlipped?.Invoke(); }));
         }
-        OnCardFlipped?.Invoke();    
+
     }
 
+    public void OpenCard()
+    {
+        if (faceUp == false)
+        {
+            FlipCard();
+        }
+    }
 
-    private IEnumerator RotateCard()
+    private IEnumerator RotateCard(Action callback)
     {
         coroutineAllowed = false;
         if (!faceUp)
@@ -60,10 +73,9 @@ public class CardAnimation : MonoBehaviour
                 yield return new WaitForSeconds(0.03f);
             }
         }
-            
         coroutineAllowed = true;
-        faceUp = !faceUp;
-
-
+        callback?.Invoke();
     }
+
+
 }
