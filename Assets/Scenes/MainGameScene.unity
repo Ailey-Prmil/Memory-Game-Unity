@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteCollection: []
-  Buttons: []
+  Cards: []
   CardFace: []
 --- !u!1 &1151364001
 GameObject:

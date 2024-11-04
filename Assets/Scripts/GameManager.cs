@@ -8,12 +8,12 @@ using Button = UnityEngine.UI.Button;
 public class GameManager : MonoBehaviour
 {
     public Sprite[] SpriteCollection;
-    public List<Button> Buttons = new List<Button>();
+    public List<Card> Cards = new List<Card>();
     public List<Sprite> CardFace = new List<Sprite>();
     
     void Awake()
     {
-        SpriteCollection = Resources.LoadAll<Sprite>("Sprites");
+        SpriteCollection = Resources.LoadAll<Sprite>("Sprites/CardSprites");
     }
 
     void Start()
@@ -26,20 +26,8 @@ public class GameManager : MonoBehaviour
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Card");
         for (int i = 0; i < objects.Length; i++)
         {
-            Buttons.Add(objects[i].GetComponent<Button>());
+            Cards.Add(objects[i].GetComponent<Card>());
+            Cards[i].SetCard(i, SpriteCollection[4]);
         }
     }
-
-    //void AddButtonListener()
-    //{
-    //    foreach (Button button in Buttons)
-    //    {
-    //        button.onClick.AddListener(CardClick);
-    //    }
-    //}
-
-    //public void CardClick()
-    //{
-    //    Debug.Log("Button Clicked");
-    //}
 }

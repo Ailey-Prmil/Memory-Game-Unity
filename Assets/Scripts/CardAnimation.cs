@@ -4,19 +4,22 @@ using System.Numerics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using System;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using System.Collections.ObjectModel;
 
 public class CardAnimation : MonoBehaviour
 {
+    public event Action OnCardFlipped;
     private SpriteRenderer rend;
-    [SerializeField]
-    private Sprite CardFront, Cardback;
-    private bool coroutineAllowed, faceUp;
+    private bool coroutineAllowed;
+    public bool faceUp { get; set; }
+    public Sprite CardBack, CardFront;
 
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.sprite = Cardback;
+        rend.sprite = CardBack;
         coroutineAllowed = true;
         faceUp = false;
     }
@@ -26,6 +29,7 @@ public class CardAnimation : MonoBehaviour
         {
             StartCoroutine(RotateCard());
         }
+        OnCardFlipped?.Invoke();    
     }
 
 
@@ -51,7 +55,7 @@ public class CardAnimation : MonoBehaviour
                 transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
-                    rend.sprite = Cardback;
+                    rend.sprite = CardBack;
                 }
                 yield return new WaitForSeconds(0.03f);
             }
