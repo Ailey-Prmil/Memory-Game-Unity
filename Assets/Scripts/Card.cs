@@ -11,12 +11,15 @@ public class Card : MonoBehaviour
 
     [HideInInspector] public int id;
     private CardAnimation cardAnimation;
+    private RectTransform parentRect;
+    private SpriteRenderer spriteRenderer;
     private CardState state;
-    [SerializeField] private float cardSize;
 
     private void Awake()
     {
         cardAnimation = GetComponent<CardAnimation>();
+        parentRect = GetComponent<RectTransform>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         state = CardState.Hidden;
         cardAnimation.OnCardFlipped += OnCardFlippedHandler;
     }
@@ -29,11 +32,12 @@ public class Card : MonoBehaviour
         Debug.Log("====================");
     }
 
-    public void SetCard(int id, Sprite cardFront)
+    public void SetCard(int id, Sprite cardFront, float cellSize)
     {
-        Debug.Log($"set card to id {id}");
         this.id = id;
         cardAnimation.CardFront = cardFront;
+        float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
+        parentRect.localScale = new Vector3(scale, scale, 1);
     }
 
 }
