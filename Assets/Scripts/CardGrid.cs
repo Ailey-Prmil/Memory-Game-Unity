@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.CompilerServices;
+using Assets.Scripts;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -91,7 +93,7 @@ public class CardGrid : MonoBehaviour, ICardObserver
         {
             Cards.Add(objects[i].GetComponent<Card>());
             Cards[i].SetCard(i, CardFaces[i], CardSize);
-            Cards[i].AddObserver(this);
+            Cards[i].EventManager.AddObserver(this);
         }
     }
     void CheckPair(Card firstCard, Card secondCard)
@@ -109,7 +111,7 @@ public class CardGrid : MonoBehaviour, ICardObserver
         OpenCards.Clear();
     }
 
-    void ICardObserver.OnCardFlipped(Card card)
+    public void OnCardFlipped(Card card)
     {
         if (card.State != Card.CardState.Visible)
         {
@@ -127,5 +129,19 @@ public class CardGrid : MonoBehaviour, ICardObserver
             CheckPair(firstCard, secondCard);
         }
     }
+    public void OnNotify(MonoBehaviour publisher)
+    {
+        Card card = publisher as Card;
+        if (card == null)
+        {
+            Debug.LogError("Publisher is not a Card!");
+            return;
+        }
+        if (card.State == Card.CardState.Visible)
+        {
+            OnCardFlipped(card);
+        }
+    }
+
 
 }

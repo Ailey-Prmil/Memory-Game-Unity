@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Assets.Scripts;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,29 +28,10 @@ public class Card : MonoBehaviour
         private set
         {
             state = value;
-            Debug.Log(State);
-            NotifyObservers();
+            EventManager.NotifyObservers(this);
         }
     }
-    private List<ICardObserver> observers = new List<ICardObserver>();
-
-    public void AddObserver(ICardObserver observer)
-    {
-        observers.Add(observer);
-    }
-
-    public void RemoveObserver(ICardObserver observer)
-    {
-        observers.Remove(observer);
-    }
-
-    private void NotifyObservers()
-    {
-        foreach (var observer in observers)
-        {
-            observer.OnCardFlipped(this);
-        }
-    }
+    public Publisher EventManager = new Publisher();
 
     private void Awake()
     {
@@ -83,6 +65,8 @@ public class Card : MonoBehaviour
     public void MatchCard()
     {
         State = CardState.Matched;
+        // implement the disappearance of the card
+
     }
 
     public static bool operator == (Card card1, Card card2)

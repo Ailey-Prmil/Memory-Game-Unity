@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public List<Sprite> SpriteCollection;
     public static GameManager Instance { get; private set; }
+    public Score Score;
 
     void Awake()
     {
