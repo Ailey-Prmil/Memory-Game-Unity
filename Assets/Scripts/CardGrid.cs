@@ -101,6 +101,7 @@ public class CardGrid : MonoBehaviour, ICardObserver
 
     public IEnumerator showAllCards(float duration)
     {
+        yield return new WaitForSeconds(2f); // wait for load transition
         foreach (Card card in Cards)
         {
             card.AutoFlipCard(); // flip all cards open
