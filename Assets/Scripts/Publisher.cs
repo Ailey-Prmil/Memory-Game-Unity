@@ -22,11 +22,11 @@ namespace Assets.Scripts
             observers.Remove(observer);
         }
 
-        public void NotifyObservers(MonoBehaviour publisher)
+        public void NotifyObservers(MonoBehaviour publisher, object eventType)
         {
             foreach (IObserver observer in observers)
             {
-                observer.OnNotify(publisher);
+                observer.OnNotify(publisher, eventType);
             }
 
         }

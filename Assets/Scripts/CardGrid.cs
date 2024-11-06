@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Assets.Scripts;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,15 +16,15 @@ public class CardGrid : MonoBehaviour, ICardObserver
     public List<Card> Cards = new List<Card>();
     public List<Card> OpenCards = new List<Card>(2);
     public List<Sprite> CardFaces = new List<Sprite>();
+    public Publisher EventManager = new Publisher();
     private GridLayoutGroup gridLayoutGroup;
     private float CardSize;
-    private float GridWidth, GridHeight, XOffset, YOffset;
+    private float GridWidth, XOffset, YOffset;
     private float Padding;
 
     void Awake()
     {
         GridWidth = GetComponent<RectTransform>().rect.width;
-        GridHeight = GetComponent<RectTransform>().rect.height;
         Padding = 50f;
         XOffset = YOffset = 9f;
         CardSize = (GridWidth - (Padding * 2) - (XOffset * (Dimension - 1))) / Dimension;
@@ -35,6 +36,7 @@ public class CardGrid : MonoBehaviour, ICardObserver
     void Start()
     {
         GetCard();
+        StartCoroutine(showAllCards(5));
     }
 
     void FormCardGrid()
@@ -96,17 +98,33 @@ public class CardGrid : MonoBehaviour, ICardObserver
             Cards[i].EventManager.AddObserver(this);
         }
     }
+
+    public IEnumerator showAllCards(float duration)
+    {
+        foreach (Card card in Cards)
+        {
+            card.AutoFlipCard(); // flip all cards open
+        }
+        yield return new WaitForSeconds(duration);
+        foreach (Card card in Cards)
+        {
+            card.AutoFlipCard(); // flip all cards closed
+        }
+    }
+
     void CheckPair(Card firstCard, Card secondCard)
     {
         if (firstCard == secondCard)
         {
             firstCard.MatchCard();
             secondCard.MatchCard();
+            EventManager.NotifyObservers(this, GridEventType.CardMatched);
         }
         else
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            EventManager.NotifyObservers(this, GridEventType.CardFailed);
         }
         OpenCards.Clear();
     }
@@ -129,7 +147,7 @@ public class CardGrid : MonoBehaviour, ICardObserver
             CheckPair(firstCard, secondCard);
         }
     }
-    public void OnNotify(MonoBehaviour publisher)
+    public void OnNotify(MonoBehaviour publisher, object eventType)
     {
         Card card = publisher as Card;
         if (card == null)

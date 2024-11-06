@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Assets.Scripts;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +29,7 @@ public class Card : MonoBehaviour
         private set
         {
             state = value;
-            EventManager.NotifyObservers(this);
+            EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
         }
     }
     public Publisher EventManager = new Publisher();
@@ -53,6 +54,20 @@ public class Card : MonoBehaviour
             State = CardState.Hidden;
         }
     }
+
+    public void AutoFlipCard()
+    {
+        cardAnimation.AutoFlipCard();
+    }
+
+    public void OpenCard()
+    {
+        if (!cardAnimation.faceUp)
+        {
+            cardAnimation.FlipCard();
+        }
+    }
+
 
     public void CloseCard()
     {

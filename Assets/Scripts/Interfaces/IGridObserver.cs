@@ -8,7 +8,8 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IGridObserver: IObserver
     {
-        void OnMatchedPair(Card fCard, Card sCard);
-        
+        void OnMatchedPair();
+        void OnMismatchedPair();
+
     }
 }

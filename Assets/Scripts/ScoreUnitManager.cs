@@ -36,7 +36,8 @@ public class ScoreUnitManager
     public void IncrementWrongMoves()
     {
         wrongMoves++;
-        if (wrongMoves is 10 or 15 or 20) ScoreUnit -= 5;
+        if (wrongMoves is 5 or 10 or 15) ScoreUnit -= 5;
+        Debug.Log(wrongMoves);
     }
 
 }

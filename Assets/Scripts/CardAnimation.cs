@@ -33,9 +33,14 @@ public class CardAnimation : MonoBehaviour
     {
         if (coroutineAllowed)
         {
+            Debug.Log("Flipping card");
             StartCoroutine(RotateCard(() => { faceUp = !faceUp; OnCardFlipped?.Invoke(); }));
         }
+    }
 
+    public void AutoFlipCard()
+    {
+        StartCoroutine(RotateCard(() => { faceUp = !faceUp;}));
     }
 
     public void OpenCard()
@@ -48,6 +53,7 @@ public class CardAnimation : MonoBehaviour
 
     private IEnumerator RotateCard(Action callback)
     {
+        Debug.Log("Rotating card starts");
         coroutineAllowed = false;
         if (!faceUp)
         {
@@ -73,6 +79,7 @@ public class CardAnimation : MonoBehaviour
                 yield return new WaitForSeconds(0.03f);
             }
         }
+        Debug.Log("Rotating card ends");
         coroutineAllowed = true;
         callback?.Invoke();
     }

@@ -1,41 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Interfaces;
+using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    private static Score instance;
-    public static Score Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new Score();
-            }
-
-            return instance;
-        }
-    }
-
-    public int Scores;
+    private ScoreAnimation scoreAnimation;
+    private int Scores;
     private ScoreUnitManager scoreUnitManager;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreUnitManager = ScoreUnitManager.Instance;
+        scoreAnimation = GetComponent<ScoreAnimation>();
         Scores = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeUnitScore()
     {
-        
+        scoreUnitManager.IncrementWrongMoves();
     }
     
-    void IncrementScore()
+    public void IncrementScore()
     {
         Scores += scoreUnitManager.ScoreUnit;
+        scoreAnimation.SetScore(Scores);
+        Debug.Log("Score: " + Scores);
     }
 }

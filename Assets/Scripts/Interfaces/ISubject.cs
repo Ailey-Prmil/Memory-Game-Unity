@@ -11,6 +11,6 @@ namespace Assets.Scripts.Interfaces
     {
         public void AddObserver(IObserver observer);
         public void RemoveObserver(IObserver observer);
-        public void NotifyObservers(MonoBehaviour publisher);
+        public void NotifyObservers(MonoBehaviour publisher, object eventType);
     }
 }

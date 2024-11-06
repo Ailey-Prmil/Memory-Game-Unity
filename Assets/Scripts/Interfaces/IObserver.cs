@@ -9,6 +9,6 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IObserver
     {
-        void OnNotify(MonoBehaviour publisher);
+        void OnNotify(MonoBehaviour publisher, object eventType);
     }
 }
