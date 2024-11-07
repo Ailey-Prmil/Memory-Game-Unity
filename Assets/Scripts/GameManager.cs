@@ -14,12 +14,11 @@ namespace Assets.Scripts
         private ProgressTrack progressTrack;
         private Streak streak;
         public PopUpTextAnimation PopUpText;
-        public ResultPanel ResultPanel;
+        public Publisher EventManager = new Publisher();
         public bool IsGameRunning;
 
         void Awake()
         {
-        
             if (Instance == null)
             {
                 Instance = this;
@@ -64,8 +63,7 @@ namespace Assets.Scripts
 
         public void OnGameStart()
         {
-            IsGameRunning = false;
-            progressTrack.ResetProgress(cardGrid.Dimension);
+            progressTrack.SetMaxProgress(cardGrid.Dimension);
             score.ResetScore();
             streak.ResetStreak();
             cardGrid.ResetGrid(() => { IsGameRunning = true;});
@@ -93,13 +91,14 @@ namespace Assets.Scripts
             score.IncrementScore();
             progressTrack.IncrementProgress();
             streak.IncrementStreak();
+            MemeManager.Instance.ShowRandomWinMeme();
 
         }
         public void OnMismatchedPair()
         {
             score.ChangeUnitScore();
             streak.ResetStreak();
-        
+            MemeManager.Instance.ShowRandomFailMeme();
         }
 
         public void OnNotify(MonoBehaviour publisher, object eventType)
