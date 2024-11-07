@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingPanelExitButtonScript : MonoBehaviour
+public class OptionPanel : MonoBehaviour
 {
     public Button settingButton;
     public Button exitButton; // Reference to the Exit button
-    public CanvasGroup mainCanvas;
+    public GameObject mainCanvas;
+    public CanvasGroup mainCanvasGroup;
 
+    void Awake()
+    {
+        mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
+    }
     void Start()
     {
         // Attach the ExitCanvas method to the button's onClick event
@@ -19,15 +24,15 @@ public class SettingPanelExitButtonScript : MonoBehaviour
     void ExitCanvas()
     {
         gameObject.SetActive(false);
-        mainCanvas.blocksRaycasts = true;
-        mainCanvas.interactable = true;
+        mainCanvasGroup.blocksRaycasts = true;
+        mainCanvasGroup.interactable = true;
         
     }
 
     void OpenCanvas()
     {
         gameObject.SetActive(true);
-        mainCanvas.blocksRaycasts = false;
-        mainCanvas.interactable = false;
+        mainCanvasGroup.blocksRaycasts = false;
+        mainCanvasGroup.interactable = false;
     }
 }

@@ -16,8 +16,7 @@ public class ScoreUnitManager
 
     ScoreUnitManager()
     {
-        ScoreUnit = 20;
-        wrongMoves = 0;
+        ResetScore();
     }
 
     public static ScoreUnitManager Instance
@@ -32,7 +31,11 @@ public class ScoreUnitManager
             return instance;
         }
     }
-
+    public void ResetScore()
+    {
+        ScoreUnit = 20;
+        wrongMoves = 0;
+    }
     public void IncrementWrongMoves()
     {
         wrongMoves++;

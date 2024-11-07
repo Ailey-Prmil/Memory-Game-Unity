@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour, IGridObserver
     private ProgressTrack progressTrack;
     private Streak streak;
     public PopUpTextAnimation PopUpText;
+    public Publisher EventManager = new Publisher();
 
     void Awake()
     {
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour, IGridObserver
             Debug.LogError("ProgressTrack component not found in the scene!");
         }
 
+
         streak = Streak.CreateInstance();
 
         cardGrid = FindObjectOfType<CardGrid>();
@@ -50,14 +52,17 @@ public class GameManager : MonoBehaviour, IGridObserver
         {
             Debug.LogError("CardGrid component not found in the scene!");
         }
-
-       
-        
     }
 
     void Start()
     {
-        cardGrid.EventManager.AddObserver(this); // Subscribe to the event
+        cardGrid.EventManager.AddObserver(this); // Be an observer to CardGrid
+        progressTrack.SetMaxProgress(cardGrid.Dimension);
+    }
+
+    void OnGameStart()
+    {
+        cardGrid.EventManager.AddObserver(this); // Be an observer to CardGrid
         progressTrack.SetMaxProgress(cardGrid.Dimension);
     }
 

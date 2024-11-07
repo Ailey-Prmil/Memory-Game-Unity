@@ -890,9 +890,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9606fbcf87901d14d893746fffd0c7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingButton: {fileID: 1198197641173738190, guid: d88f418ba6ab1a9409c4d790e70b79a7, type: 3}
+  settingButton: {fileID: 0}
   exitButton: {fileID: 6092017895891858041}
   mainCanvas: {fileID: 0}
+  mainCanvasGroup: {fileID: 0}
 --- !u!1 &5414077056146341340
 GameObject:
   m_ObjectHideFlags: 0

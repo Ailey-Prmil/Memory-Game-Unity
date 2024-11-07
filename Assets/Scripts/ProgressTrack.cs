@@ -16,6 +16,12 @@ public class ProgressTrack : MonoBehaviour
         ProgressBarAnimation = GetComponent<ProgressBarAnimation>();
     }
 
+    void ResetProgress()
+    {
+        progress = 0;
+        ProgressBarAnimation.SetProgress(progress);
+    }
+
     public void SetMaxProgress(int Dimension)
     {
         maxProgress = Dimension*Dimension/2;

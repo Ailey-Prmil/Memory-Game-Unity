@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -29,4 +30,12 @@ public class Score : MonoBehaviour
         scoreAnimation.SetScore(Scores);
         Debug.Log("Score: " + Scores);
     }
+
+    public void ResetScore()
+    {
+        Scores = 0;
+        scoreAnimation.SetScore(Scores);
+    }
+
+
 }

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using System.Runtime.CompilerServices;
 using Assets.Scripts;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
@@ -34,6 +32,12 @@ public class CardGrid : MonoBehaviour, ICardObserver
     }
 
     void Start()
+    {
+        GetCard();
+        StartCoroutine(showAllCards(5));
+    }
+
+    void OnGameStart()
     {
         GetCard();
         StartCoroutine(showAllCards(5));
