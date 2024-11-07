@@ -30,8 +30,9 @@ namespace Assets.Scripts
             }
 
             IsGameRunning = false;
-            Debug.Log("Setting isGameRunning to false");
             SpriteCollection = new List<Sprite>(Resources.LoadAll<Sprite>("Sprites/CardSprites"));
+            Sprite backSprite = SpriteCollection.Find(sprite => sprite.name == "Cardback");
+            SpriteCollection.Remove(backSprite);
 
             score = FindObjectOfType<Score>();
             if (score == null)
@@ -53,6 +54,8 @@ namespace Assets.Scripts
             {
                 Debug.LogError("CardGrid component not found in the scene!");
             }
+
+
         }
 
         void Start()
@@ -61,21 +64,22 @@ namespace Assets.Scripts
             cardGrid.EventManager.AddObserver(this); // Be an observer to CardGrid
         }
 
-        void OnGameStart()
+        public void OnGameStart()
         {
-            progressTrack.SetMaxProgress(cardGrid.Dimension);
+            IsGameRunning = false;
+            progressTrack.ResetProgress();
             score.ResetScore();
             streak.ResetStreak();
-            cardGrid.ResetGrid(() => { IsGameRunning = true; });
+            cardGrid.ResetGrid(() => { IsGameRunning = true;});
             
         }
 
-        void OnGamePause()
+        public void OnGamePause()
         {
             IsGameRunning = false;
         }
 
-        void OnGameResume()
+        public void OnGameResume()
         {
             IsGameRunning = true;
         }

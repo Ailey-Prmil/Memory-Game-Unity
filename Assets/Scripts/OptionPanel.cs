@@ -5,40 +5,38 @@ namespace Assets.Scripts
 {
     public class OptionPanel : MonoBehaviour
     {
-        public Button settingButton;
+        public Button triggerButton;
         public Button exitButton; // Reference to the Exit button
         public GameObject mainCanvas;
         public CanvasGroup mainCanvasGroup;
 
-        void Awake()
+        protected virtual void Awake()
         {
             mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
-        }
-        void Start()
-        {
-            // Attach the ExitCanvas method to the button's onClick event
             exitButton.onClick.AddListener(ExitCanvas);
-            settingButton.onClick.AddListener(OpenCanvas);
+            triggerButton.onClick.AddListener(OpenCanvas);
             gameObject.SetActive(false);
         }
 
-        // Method to deactivate the Settings Canvas
-        void ExitCanvas()
+        protected void ExitCanvas()
         {
-
             gameObject.SetActive(false);
             mainCanvasGroup.blocksRaycasts = true;
             mainCanvasGroup.interactable = true;
-            GameManager.Instance.IsGameRunning = true;
+            GameManager.Instance.OnGameResume();
 
         }
 
-        void OpenCanvas()
+        protected void OpenCanvas()
         {
-            gameObject.SetActive(true);
-            mainCanvasGroup.blocksRaycasts = false;
-            mainCanvasGroup.interactable = false;
-            GameManager.Instance.IsGameRunning = false;
+            Debug.Log("OpenCanvas");
+            if (GameManager.Instance.IsGameRunning)
+            {
+                gameObject.SetActive(true);
+                mainCanvasGroup.blocksRaycasts = false;
+                mainCanvasGroup.interactable = false;
+                GameManager.Instance.OnGamePause();
+            }
         }
     }
 }

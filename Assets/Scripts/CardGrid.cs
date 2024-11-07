@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Assets.Scripts
         public int Dimension;
         public GameObject CardPrefab;
         private List<Card> Cards = new List<Card>();
-        private List<Card> OpenCards = new List<Card>(2);
+        public List<Card> OpenCards = new List<Card>(2);
         private List<Sprite> CardFaces = new List<Sprite>();
         public Publisher EventManager = new Publisher();
         private GridLayoutGroup gridLayoutGroup;
@@ -33,17 +34,20 @@ namespace Assets.Scripts
             InitializeCardFaces(GameManager.Instance.SpriteCollection);
             AddCard();
         }
-
-        //void Start()
-        //{
-        //    GetCard();
-        //    StartCoroutine(showAllCards(5));
-        //}
+        void Start()
+        {
+            GetCard();
+        }
 
         public void ResetGrid(Action callback)
         {
             ShuffleCardFaces(CardFaces);
-            GetCard();
+            for (int i = 0; i < Cards.Count; i++)
+            {
+                Cards[i].ResetCard();
+                Cards[i].SetCard(i, CardFaces[i], CardSize);
+            }
+            
             StartCoroutine(showAllCards(5, callback));
 
         }
@@ -101,6 +105,7 @@ namespace Assets.Scripts
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Card");
             for (int i = 0; i < objects.Length; i++)
             {
+                Debug.Log("Card-" + i);
                 Cards.Add(objects[i].GetComponent<Card>());
                 Cards[i].SetCard(i, CardFaces[i], CardSize);
                 Cards[i].EventManager.AddObserver(this);
@@ -109,16 +114,19 @@ namespace Assets.Scripts
 
         public IEnumerator showAllCards(float duration, Action callback)
         {
+            // faceUp must be false at first
+            Debug.Log("showAllCards start");
             yield return new WaitForSeconds(2f); // wait for load transition
             foreach (Card card in Cards)
             {
-                card.AutoFlipCard(); // flip all cards open
+                card.AutoOpenCard(); // flip all cards open
             }
             yield return new WaitForSeconds(duration);
             foreach (Card card in Cards)
             {
-                card.AutoFlipCard(); // flip all cards closed
+                card.AutoCloseCard(); // flip all cards closed
             }
+            Debug.Log("showAllCards end");
             callback?.Invoke();
         }
 

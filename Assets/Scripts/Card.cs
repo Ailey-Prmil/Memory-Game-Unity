@@ -37,6 +37,12 @@ namespace Assets.Scripts
             state = CardState.Hidden;
             cardAnimation.OnCardFlipped += OnCardFlippedHandler;
         }
+        public void ResetCard()
+        {
+            Debug.Log("ResetCard");
+            state = CardState.Hidden; // not trigger observer
+            AutoCloseCard();
+        }
 
         private void OnCardFlippedHandler()
         {
@@ -50,22 +56,27 @@ namespace Assets.Scripts
             }
         }
 
-        public void AutoFlipCard()
+        public void AutoOpenCard()
         {
-            cardAnimation.AutoFlipCard();
-        }
-
-        public void OpenCard()
-        {
+            Debug.Log("AutoOpenCard");
             if (!cardAnimation.faceUp)
             {
-                cardAnimation.FlipCard();
+                cardAnimation.AutoFlipCard();
             }
         }
 
 
         public void CloseCard()
         {
+            if (cardAnimation.faceUp)
+            {
+                cardAnimation.FlipCard();
+            }
+        }
+
+        public void AutoCloseCard()
+        {
+            Debug.Log("AutoCloseCard");
             if (cardAnimation.faceUp)
             {
                 cardAnimation.FlipCard();
@@ -96,7 +107,6 @@ namespace Assets.Scripts
             cardAnimation.CardFront = cardFront;
             float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
             parentRect.localScale = new Vector3(scale, scale, 1);
-            Debug.Log("Card " + id + " is " + cardAnimation.CardFront.name);
         }
 
     }

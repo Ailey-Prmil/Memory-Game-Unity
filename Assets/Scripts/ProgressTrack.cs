@@ -15,7 +15,7 @@ namespace Assets.Scripts
             ProgressBarAnimation = GetComponent<ProgressBarAnimation>();
         }
 
-        void ResetProgress()
+        public void ResetProgress()
         {
             progress = 0;
             ProgressBarAnimation.SetProgress(progress);

@@ -14,7 +14,6 @@ namespace Assets.Scripts
 
         void Awake()
         {
-
             rend = GetComponent<SpriteRenderer>();
             rend.sprite = CardBack;
             coroutineAllowed = true;
@@ -23,8 +22,6 @@ namespace Assets.Scripts
 
         private void OnMouseDown() // Detects click directly on the card
         {
-            Debug.Log("Card clicked");
-            Debug.Log(GameManager.Instance.IsGameRunning);
             if (GameManager.Instance.IsGameRunning) OpenCard(); // only allow open card when game is running
         }
 
@@ -51,9 +48,11 @@ namespace Assets.Scripts
 
         private IEnumerator RotateCard(Action callback)
         {
+            Debug.Log("RotateCard start");
             coroutineAllowed = false;
             if (!faceUp)
             {
+                // Open card
                 for (float i = 0f; i <= 180f; i += 10f)
                 {
                     transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
@@ -66,6 +65,7 @@ namespace Assets.Scripts
             }
             else
             {
+                // Close card
                 for (float i = 180f; i >= 0f; i -= 10f)
                 {
                     transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
@@ -76,8 +76,10 @@ namespace Assets.Scripts
                     yield return new WaitForSeconds(0.03f);
                 }
             }
+            Debug.Log("RotateCard end");
             coroutineAllowed = true;
             callback?.Invoke();
+            Debug.Log($"FaceUp = {faceUp}");
         }
 
 
