@@ -1,121 +1,106 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using System.Xml.Serialization;
-//using UnityEngine;
-//using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using Assets.Scripts;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Interfaces;
+using UnityEngine;
+using UnityEngine.UI;
 
 
-//public class Card : MonoBehaviour
-//{
-//    [HideInInspector] public int id;
-//    public Sprite cardBack;
-//    [HideInInspector] public Sprite cardFront;
+public class Card : MonoBehaviour
+{
+    public enum CardState
+    {
+        Hidden,
+        Visible,
+        Matched
+    }
 
-//    private Image image;
-//    private Button button;
+    [HideInInspector] public int id;
+    private CardAnimation cardAnimation;
+    private RectTransform parentRect;
+    private SpriteRenderer spriteRenderer;
+    private CardState state;
 
-//    private bool isFlippingOpen;
-//    private bool isFlippingClose;
-//    private bool flipped;//true==cardfront
-//    private float flipAmount = 1;
-//    public float flipSpeed = 4;
+    public CardState State
+    {
+        get { return state; }
+        private set
+        {
+            state = value;
+            EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
+        }
+    }
+    public Publisher EventManager = new Publisher();
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        image = GetComponent<Image>();
-//        button = GetComponent<Button>();
-//    }
-//    //Onclick to flip card open
-//    public void FlipCard()
-//    {
-//        if (CardManager.instance.choise1 == 0)
-//        {
-//            CardManager.instance.choise1 = id;
-//            CardManager.instance.AddChoosenCard(this.gameObject);
-//            isFlippingOpen = true;
-//            StartCoroutine(FlipOpen());
-//            button.interactable = false;
-//        }
-//        else if (CardManager.instance.choise2 == 0)
-//        {
-//            CardManager.instance.choise2 = id;
-//            CardManager.instance.AddChoosenCard(this.gameObject);
-//            isFlippingOpen = true;
-//            StartCoroutine(FlipOpen());
-//            button.interactable = false;
-//            StartCoroutine (CardManager.instance.CompareCards());
-//        }
-//    }
-//    // open the card over time
-//    IEnumerator FlipOpen()
-//    {
-//        while (isFlippingOpen && flipAmount > 0)
-//        {
-//            flipAmount -= Time.deltaTime * flipSpeed;
-//            flipAmount = Mathf.Clamp01(flipAmount);
-//            transform.localScale = new Vector3(flipAmount, transform.localScale.y, transform.localScale.z);
-//            if (flipAmount <= 0)
-//            {
-//                image.sprite = cardFront;
-//                isFlippingOpen = false;
-//                isFlippingClose = true;
-//            }
-//            yield return null;
-//        }
-//        while (isFlippingClose && flipAmount < 1)
-//        {
-//            flipAmount += Time.deltaTime * flipSpeed;
-//            flipAmount = Mathf.Clamp01(flipAmount);
-//            transform.localScale = new Vector3(flipAmount, transform.localScale.y, transform.localScale.z);
-//            if (flipAmount >= 1)
-//            {
-//                isFlippingClose = false;
-//            }
-//            yield return null;
-//        }
-//    }
+    private void Awake()
+    {
+        cardAnimation = GetComponent<CardAnimation>();
+        parentRect = GetComponent<RectTransform>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        state = CardState.Hidden;
+        cardAnimation.OnCardFlipped += OnCardFlippedHandler;
+    }
 
-//    //closecard
-//    public void CloseCard()
-//    {
-//        isFlippingOpen = true;
-//        StartCoroutine(FlipClose());
-//    }
-//    //close the card over time
-//    IEnumerator FlipClose()
-//    {
-//        while (isFlippingOpen && flipAmount > 0)
-//        {
-//            flipAmount -= Time.deltaTime * flipSpeed;
-//            flipAmount = Mathf.Clamp01(flipAmount);
-//            transform.localScale = new Vector3(flipAmount, transform.localScale.y, transform.localScale.z);
-//            if (flipAmount <= 0)
-//            {
-//                image.sprite = cardBack;
-//                isFlippingOpen = false;
-//                isFlippingClose = true;
-//            }
-//            yield return null;
-//        }
-//        while (isFlippingClose && flipAmount < 1)
-//        {
-//            flipAmount += Time.deltaTime * flipSpeed;
-//            flipAmount = Mathf.Clamp01(flipAmount);
-//            transform.localScale = new Vector3(flipAmount, transform.localScale.y, transform.localScale.z);
-//            if (flipAmount >= 1)
-//            {
-//                isFlippingClose = false;
-//            }
-//            yield return null;
-//        }
-//        button.interactable = true;
-//    }
+    private void OnCardFlippedHandler()
+    {
+        if (cardAnimation.faceUp)
+        {
+            State = CardState.Visible;
+        }
+        else
+        {
+            State = CardState.Hidden;
+        }
+    }
+
+    public void AutoFlipCard()
+    {
+        cardAnimation.AutoFlipCard();
+    }
+
+    public void OpenCard()
+    {
+        if (!cardAnimation.faceUp)
+        {
+            cardAnimation.FlipCard();
+        }
+    }
 
 
-//    // Update is called once per frame
-//    void Update()
-//    {
+    public void CloseCard()
+    {
+        if (cardAnimation.faceUp)
+        {
+            cardAnimation.FlipCard();
+        }
+    }
 
-//    }
-//}
+    public void MatchCard()
+    {
+        State = CardState.Matched;
+        // implement the disappearance of the card
+
+    }
+
+    public static bool operator == (Card card1, Card card2)
+    {
+        if (ReferenceEquals(card1, null) || ReferenceEquals(card2, null)) { return false; }
+        return card1.cardAnimation.CardFront == card2.cardAnimation.CardFront;
+    }
+
+    public static bool operator !=(Card card1, Card card2)
+    {
+        return !(card1 == card2);
+    }
+
+    public void SetCard(int id, Sprite cardFront, float cellSize)
+    {
+        this.id = id;
+        cardAnimation.CardFront = cardFront;
+        float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
+        parentRect.localScale = new Vector3(scale, scale, 1);
+    }
+
+}

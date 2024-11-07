@@ -4,33 +4,56 @@ using System.Numerics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using System;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using System.Collections.ObjectModel;
 
 public class CardAnimation : MonoBehaviour
 {
+    public event Action OnCardFlipped;
     private SpriteRenderer rend;
-    [SerializeField]
-    private Sprite CardFront, Cardback;
-    private bool coroutineAllowed, faceUp;
+    private bool coroutineAllowed;
+    public bool faceUp { get; set; }
+    public Sprite CardBack, CardFront;
 
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.sprite = Cardback;
+        rend.sprite = CardBack;
         coroutineAllowed = true;
         faceUp = false;
     }
+
     private void OnMouseDown() // Detects click directly on the card
+    {
+        OpenCard();
+    }
+
+    public void FlipCard() // Detects click on the button
     {
         if (coroutineAllowed)
         {
-            StartCoroutine(RotateCard());
+            Debug.Log("Flipping card");
+            StartCoroutine(RotateCard(() => { faceUp = !faceUp; OnCardFlipped?.Invoke(); }));
         }
     }
 
-
-    private IEnumerator RotateCard()
+    public void AutoFlipCard()
     {
+        StartCoroutine(RotateCard(() => { faceUp = !faceUp;}));
+    }
+
+    public void OpenCard()
+    {
+        if (faceUp == false)
+        {
+            FlipCard();
+        }
+    }
+
+    private IEnumerator RotateCard(Action callback)
+    {
+        Debug.Log("Rotating card starts");
         coroutineAllowed = false;
         if (!faceUp)
         {
@@ -51,15 +74,15 @@ public class CardAnimation : MonoBehaviour
                 transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
-                    rend.sprite = Cardback;
+                    rend.sprite = CardBack;
                 }
                 yield return new WaitForSeconds(0.03f);
             }
         }
-            
+        Debug.Log("Rotating card ends");
         coroutineAllowed = true;
-        faceUp = !faceUp;
-
-
+        callback?.Invoke();
     }
+
+
 }

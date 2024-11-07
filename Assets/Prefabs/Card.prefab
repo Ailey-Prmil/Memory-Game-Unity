@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7252989386053664676}
   - component: {fileID: 4858308432781396041}
   - component: {fileID: 2320077467625919368}
+  - component: {fileID: 6255732264761578368}
   m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Card
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9144906139821780330}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 0
@@ -147,5 +148,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701b3048a7cef894fbce6e14222472fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardBack: {fileID: 931255972, guid: 28a46b617a523a4448bb21e1c7624fc6, type: 3}
   CardFront: {fileID: 1774565894, guid: 28a46b617a523a4448bb21e1c7624fc6, type: 3}
-  Cardback: {fileID: 931255972, guid: 28a46b617a523a4448bb21e1c7624fc6, type: 3}
+--- !u!114 &6255732264761578368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144906139821780330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771744f54af4ea54487620ab84a45d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  cardSize: 128
