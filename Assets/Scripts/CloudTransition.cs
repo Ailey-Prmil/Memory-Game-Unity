@@ -1,51 +1,53 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudTransition : MonoBehaviour
+namespace Assets.Scripts
 {
-    public RectTransform CloudRectTransform;
-    public float Duration;
-    public float CloudHeight;
-
-    void Awake()
+    public class CloudTransition : MonoBehaviour
     {
-        CloudRectTransform = GetComponent<RectTransform>();
-        Duration = 2f;
-        CloudHeight = 1800f;
-    }
-    void Start()
-    {
-        
-    }
+        public RectTransform CloudRectTransform;
+        public float Duration;
+        public float CloudHeight;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public IEnumerator CloudInTransition()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < Duration)
+        void Awake()
         {
-            CloudRectTransform.sizeDelta = new Vector2(CloudRectTransform.rect.width, Mathf.Lerp(CloudHeight, 0, elapsedTime / Duration));
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            CloudRectTransform = GetComponent<RectTransform>();
+            Duration = 2f;
+            CloudHeight = 1800f;
         }
-    }
-
-    public IEnumerator CloudOutTransition()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < Duration)
+        void Start()
         {
-            CloudRectTransform.sizeDelta = new Vector2(CloudRectTransform.rect.width, Mathf.Lerp(0, CloudHeight, elapsedTime / Duration));
-            elapsedTime += Time.deltaTime;
-            yield return null;
+        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
+        public IEnumerator CloudInTransition()
+        {
+            float elapsedTime = 0f;
+
+            while (elapsedTime < Duration)
+            {
+                CloudRectTransform.sizeDelta = new Vector2(CloudRectTransform.rect.width, Mathf.Lerp(CloudHeight, 0, elapsedTime / Duration));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        public IEnumerator CloudOutTransition()
+        {
+            float elapsedTime = 0f;
+
+            while (elapsedTime < Duration)
+            {
+                CloudRectTransform.sizeDelta = new Vector2(CloudRectTransform.rect.width, Mathf.Lerp(0, CloudHeight, elapsedTime / Duration));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 }

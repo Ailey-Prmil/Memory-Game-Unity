@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class PersistentObject : MonoBehaviour
+namespace Assets.Scripts
 {
-    void Awake()
+    public class PersistentObject : MonoBehaviour
     {
-        DontDestroyOnLoad(this.gameObject);
+        void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 }

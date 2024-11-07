@@ -559,7 +559,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &382797287
 Canvas:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ Canvas:
   m_GameObject: {fileID: 382797283}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_Camera: {fileID: 81889775}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -591,8 +591,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382797283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1255380503}
@@ -607,8 +607,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!224 &427560036 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2075265358590353321, guid: d88f418ba6ab1a9409c4d790e70b79a7, type: 3}
@@ -1252,7 +1252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -205.1, y: 148.7}
+  m_AnchoredPosition: {x: -205.1, y: 148.70001}
   m_SizeDelta: {x: 210.91, y: 174.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!199 &991704865
@@ -6954,11 +6954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e896f1650517f78448fc6790f2eda929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimension: 4
+  Dimension: 6
   CardPrefab: {fileID: 9144906139821780330, guid: 06933c19971aa4a46b09b9d1a1e24a2f, type: 3}
-  Cards: []
-  OpenCards: []
-  CardFaces: []
 --- !u!1 &1487000961
 GameObject:
   m_ObjectHideFlags: 0
