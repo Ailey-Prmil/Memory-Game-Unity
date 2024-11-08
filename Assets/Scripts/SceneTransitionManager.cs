@@ -7,17 +7,22 @@ namespace Assets.Scripts
 {
     public class SceneTransitionManager : MonoBehaviour
     {
+        public static SceneTransitionManager Instance { get; private set; }
         public CloudTransition CloudTransition;
-        public Scene NextScene;
-        public Button StartButton;
 
         void Awake()
         {
-            DontDestroyOnLoad(this.gameObject);
-        }
-        void Start()
-        {
-            StartButton.onClick.AddListener(StartGame);
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else 
+            {
+                Destroy(gameObject);
+            }
+
+            
         }
 
         public void StartGame()
@@ -27,7 +32,7 @@ namespace Assets.Scripts
 
         public void ExitGame()
         {
-            Application.Quit();
+            LoadScene("GameMenuScene");
         }
 
         public void LoadScene(string sceneName)

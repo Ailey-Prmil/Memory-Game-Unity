@@ -6,9 +6,9 @@ namespace Assets.Scripts
     public class PopUpTextAnimation : MonoBehaviour
     {
         public TextMeshProUGUI textComponent;
-        public float displayDuration = 2.0f; // Duration to show the text
-        public float fadeOutDuration = 1.0f; // Duration of the fade-out effect
-        public float fadeInDuration = 1.0f;
+        public float displayDuration; // Duration to show the text
+        public float fadeOutDuration; // Duration of the fade-out effect
+        public float fadeInDuration;
 
         private void Start()
         {

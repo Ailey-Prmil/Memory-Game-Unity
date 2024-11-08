@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -15,15 +16,17 @@ namespace Assets.Scripts
             ProgressBarAnimation = GetComponent<ProgressBarAnimation>();
         }
 
-        public void ResetProgress()
+        public void ResetProgress(int dimension)
         {
             progress = 0;
+            SetMaxProgress(dimension);
             ProgressBarAnimation.SetProgress(progress);
         }
 
-        public void SetMaxProgress(int Dimension)
+        public void SetMaxProgress(int dimension)
         {
-            maxProgress = Dimension*Dimension/2;
+            maxProgress = dimension*dimension/2;
+            Debug.Log("Max Progress: " + maxProgress);
             ProgressBarAnimation.progressBar.maxValue = maxProgress;
 
         }

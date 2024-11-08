@@ -10,6 +10,7 @@ namespace Assets.Scripts.Enums
     {
         CardFailed,
         CardMatched,
+        AllCardsMatched
 
     }
 }

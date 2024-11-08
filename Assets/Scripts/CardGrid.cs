@@ -17,9 +17,11 @@ namespace Assets.Scripts
         public GameObject CardPrefab;
         private List<Card> Cards = new List<Card>();
         public List<Card> OpenCards = new List<Card>(2);
+        private List<Card> matchedCards = new List<Card>();
         private List<Sprite> CardFaces = new List<Sprite>();
         public Publisher EventManager = new Publisher();
         private GridLayoutGroup gridLayoutGroup;
+        public CountDownAnimation CountDownAnimation;
         private float CardSize;
         private float GridWidth, XOffset, YOffset;
         private float Padding;
@@ -42,6 +44,7 @@ namespace Assets.Scripts
         public void ResetGrid(Action callback)
         {
             ShuffleCardFaces(CardFaces);
+            matchedCards.Clear();
             for (int i = 0; i < Cards.Count; i++)
             {
                 Cards[i].ResetCard();
@@ -115,8 +118,9 @@ namespace Assets.Scripts
         public IEnumerator showAllCards(float duration, Action callback)
         {
             // faceUp must be false at first
-            Debug.Log("showAllCards start");
-            yield return new WaitForSeconds(2f); // wait for load transition
+            yield return new WaitForSeconds(1f); // wait for load transition
+            
+            CountDownAnimation.StartCountdown((int)duration);
             foreach (Card card in Cards)
             {
                 card.AutoOpenCard(); // flip all cards open
@@ -126,7 +130,6 @@ namespace Assets.Scripts
             {
                 card.AutoCloseCard(); // flip all cards closed
             }
-            Debug.Log("showAllCards end");
             callback?.Invoke();
         }
 
@@ -136,7 +139,13 @@ namespace Assets.Scripts
             {
                 firstCard.MatchCard();
                 secondCard.MatchCard();
+                matchedCards.Add(firstCard);
+                matchedCards.Add(secondCard);
                 EventManager.NotifyObservers(this, GridEventType.CardMatched);
+                if (matchedCards.Count == Cards.Count)
+                {
+                    EventManager.NotifyObservers(this, GridEventType.AllCardsMatched);
+                }
             }
             else
             {

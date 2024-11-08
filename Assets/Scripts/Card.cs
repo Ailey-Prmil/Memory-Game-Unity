@@ -39,7 +39,6 @@ namespace Assets.Scripts
         }
         public void ResetCard()
         {
-            Debug.Log("ResetCard");
             state = CardState.Hidden; // not trigger observer
             AutoCloseCard();
         }

@@ -14,7 +14,7 @@ namespace Assets.Scripts
         private ProgressTrack progressTrack;
         private Streak streak;
         public PopUpTextAnimation PopUpText;
-        public Publisher EventManager = new Publisher();
+        public ResultPanel ResultPanel;
         public bool IsGameRunning;
 
         void Awake()
@@ -54,8 +54,6 @@ namespace Assets.Scripts
             {
                 Debug.LogError("CardGrid component not found in the scene!");
             }
-
-
         }
 
         void Start()
@@ -67,7 +65,7 @@ namespace Assets.Scripts
         public void OnGameStart()
         {
             IsGameRunning = false;
-            progressTrack.ResetProgress();
+            progressTrack.ResetProgress(cardGrid.Dimension);
             score.ResetScore();
             streak.ResetStreak();
             cardGrid.ResetGrid(() => { IsGameRunning = true;});
@@ -82,6 +80,12 @@ namespace Assets.Scripts
         public void OnGameResume()
         {
             IsGameRunning = true;
+        }
+
+        public void OnGameOver()
+        {
+            IsGameRunning = false;
+            ResultPanel.ShowResultPanel(true, score.GetScores(), streak.GetMaxStreakCount());
         }
 
         public void OnMatchedPair()
@@ -102,11 +106,16 @@ namespace Assets.Scripts
         {
             if (eventType is GridEventType.CardMatched) OnMatchedPair();
             else if (eventType is GridEventType.CardFailed) OnMismatchedPair();
+
             int streakCount = streak.GetStreakCount();
-            Debug.Log("Streak: " + streakCount);
             if (streakCount % 2 == 0 && streakCount > 0)
             {
                 PopUpText.ShowText($"Combo {streakCount}");
+            }
+
+            if (eventType is GridEventType.AllCardsMatched)
+            {
+                OnGameOver();
             }
         }
     }

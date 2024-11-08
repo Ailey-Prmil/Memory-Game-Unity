@@ -5,7 +5,7 @@ namespace Assets.Scripts
     public class Score : MonoBehaviour
     {
         private ScoreAnimation scoreAnimation;
-        private int Scores;
+        private int scores;
         private ScoreUnitManager scoreUnitManager;
 
         // Start is called before the first frame update
@@ -13,7 +13,7 @@ namespace Assets.Scripts
         {
             scoreUnitManager = ScoreUnitManager.Instance;
         
-            Scores = 0;
+            scores = 0;
         }
 
         public void ChangeUnitScore()
@@ -23,20 +23,25 @@ namespace Assets.Scripts
     
         public void IncrementScore()
         {
-            Scores += scoreUnitManager.ScoreUnit;
-            scoreAnimation.SetScore(Scores);
-            Debug.Log("Score: " + Scores);
+            scores += scoreUnitManager.ScoreUnit;
+            scoreAnimation.SetScore(scores);
+            Debug.Log("Score: " + scores);
         }
 
         public void ResetScore()
         {
-            Scores = 0;
+            scores = 0;
             if (scoreAnimation == null)
             {
                 scoreAnimation = GetComponent<ScoreAnimation>();
             }
 
-            scoreAnimation.SetScore(Scores);
+            scoreAnimation.SetScore(scores);
+        }
+
+        public int GetScores()
+        {
+            return scores;
         }
 
 
