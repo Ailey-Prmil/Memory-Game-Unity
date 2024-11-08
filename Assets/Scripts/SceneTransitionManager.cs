@@ -9,6 +9,7 @@ namespace Assets.Scripts
     {
         public static SceneTransitionManager Instance { get; private set; }
         public CloudTransition CloudTransition;
+        public Button PlayButton;
 
         void Awake()
         {
@@ -23,6 +24,11 @@ namespace Assets.Scripts
             }
 
             
+        }
+
+        void Start()
+        {
+            PlayButton.onClick.AddListener(StartGame);
         }
 
         public void StartGame()
