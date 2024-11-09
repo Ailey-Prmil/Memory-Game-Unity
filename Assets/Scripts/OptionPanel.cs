@@ -9,6 +9,7 @@ namespace Assets.Scripts
         public Button exitButton; // Reference to the Exit button
         public GameObject mainCanvas;
         public CanvasGroup mainCanvasGroup;
+        private bool isPanelEnabled;
 
         protected virtual void Awake()
         {
@@ -23,19 +24,20 @@ namespace Assets.Scripts
             gameObject.SetActive(false);
             mainCanvasGroup.blocksRaycasts = true;
             mainCanvasGroup.interactable = true;
-            GameManager.Instance.OnGameResume();
+            if (GameManager.Instance != null) GameManager.Instance.OnGameResume(); // Only call OnGameResume if GameManager exists
 
         }
 
         protected void OpenCanvas()
         {
-            Debug.Log("OpenCanvas");
-            if (GameManager.Instance.IsGameRunning)
+            if (GameManager.Instance == null) isPanelEnabled = true;
+            else isPanelEnabled = GameManager.Instance.IsGameRunning; // Panel is disabled when game is not running (i.e. game is paused)
+            if (isPanelEnabled)
             {
                 gameObject.SetActive(true);
                 mainCanvasGroup.blocksRaycasts = false;
                 mainCanvasGroup.interactable = false;
-                GameManager.Instance.OnGamePause();
+                if (GameManager.Instance != null) GameManager.Instance.OnGamePause(); // Only call OnGamePause if GameManager exists
             }
         }
     }

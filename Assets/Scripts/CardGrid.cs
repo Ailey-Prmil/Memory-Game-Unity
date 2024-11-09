@@ -130,7 +130,6 @@ namespace Assets.Scripts
             {
                 card.AutoCloseCard(); // flip all cards closed
             }
-            Debug.Log("showAllCards end");
             callback?.Invoke();
         }
 
