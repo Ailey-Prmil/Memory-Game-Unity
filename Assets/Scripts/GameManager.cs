@@ -82,10 +82,10 @@ namespace Assets.Scripts
             IsGameRunning = true;
         }
 
-        public void OnGameOver()
+        public void OnGameOver(bool isWin)
         {
             IsGameRunning = false;
-            ResultPanel.ShowResultPanel(true, score.GetScores(), streak.GetMaxStreakCount());
+            ResultPanel.ShowResultPanel(isWin, score.GetScores(), streak.GetMaxStreakCount());
         }
 
         public void OnMatchedPair()
@@ -115,7 +115,7 @@ namespace Assets.Scripts
 
             if (eventType is GridEventType.AllCardsMatched)
             {
-                OnGameOver();
+                OnGameOver(true);
             }
         }
     }

@@ -774,6 +774,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 382797283}
   mainCanvasGroup: {fileID: 0}
   RestartButton: {fileID: 329709005}
+  QuitButton: {fileID: 1190097391}
 --- !u!1 &382797283
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class PauseSettingPanel : OptionPanel
 {
     public Button RestartButton;
+    public Button QuitButton;
 
     protected override void Awake()
     {
         RestartButton.onClick.AddListener(RestartGame);
+        QuitButton.onClick.AddListener(QuitGame);
         base.Awake();
     }
 
@@ -18,6 +20,11 @@ public class PauseSettingPanel : OptionPanel
     {
         ExitCanvas();
         GameManager.Instance.OnGameStart();
-        
+    }
+
+    void QuitGame()
+    {
+        gameObject.SetActive(false);
+        GameManager.Instance.OnGameOver(false);
     }
 }

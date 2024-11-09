@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9606fbcf87901d14d893746fffd0c7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingButton: {fileID: 0}
+  triggerButton: {fileID: 0}
   exitButton: {fileID: 6092017895891858041}
   mainCanvas: {fileID: 0}
   mainCanvasGroup: {fileID: 0}
