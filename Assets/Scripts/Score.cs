@@ -25,7 +25,12 @@ namespace Assets.Scripts
         {
             scores += scoreUnitManager.ScoreUnit;
             scoreAnimation.SetScore(scores);
-            Debug.Log("Score: " + scores);
+        }
+
+        public void AddBonus(int combo)
+        {
+            scores += combo * scoreUnitManager.ScoreUnit;
+            scoreAnimation.SetScore(scores);
         }
 
         public void ResetScore()

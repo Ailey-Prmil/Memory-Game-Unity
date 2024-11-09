@@ -90,18 +90,16 @@ namespace Assets.Scripts
 
         public void OnMatchedPair()
         {
+            MemeManager.Instance.ShowRandomWinMeme();
             score.IncrementScore();
             progressTrack.IncrementProgress();
             streak.IncrementStreak();
-            MemeManager.Instance.ShowRandomWinMeme();
-
         }
         public void OnMismatchedPair()
         {
+            MemeManager.Instance.ShowRandomFailMeme();
             score.ChangeUnitScore();
             streak.ResetStreak();
-            MemeManager.Instance.ShowRandomFailMeme();
-        
         }
 
         public void OnNotify(MonoBehaviour publisher, object eventType)
@@ -114,6 +112,7 @@ namespace Assets.Scripts
             {
                 SoundManager.Instance.PlaySound("combo", 1f);
                 PopUpText.ShowText($"Combo {streakCount}");
+                score.AddBonus(streakCount);
             }
 
             if (eventType is GridEventType.AllCardsMatched)

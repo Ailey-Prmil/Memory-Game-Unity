@@ -46,7 +46,7 @@ public class MemeManager : MonoBehaviour
         memeImage.sprite = memeSprites[randomIndex];
 
         // Gọi coroutine để ẩn meme sau vài giây
-        StartCoroutine(HideMemeAfterDelay(2.0f));
+        StartCoroutine(HideMemeAfterDelay(0.5f));
     }
 
     public void ShowRandomFailMeme()
@@ -59,7 +59,7 @@ public class MemeManager : MonoBehaviour
         memeImage.sprite = failMemeSprites[randomIndex];
 
    
-        StartCoroutine(HideMemeAfterDelay(2.0f));
+        StartCoroutine(HideMemeAfterDelay(1.0f));
     }
 
     private IEnumerator HideMemeAfterDelay(float delay)
