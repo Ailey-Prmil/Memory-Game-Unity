@@ -93,12 +93,14 @@ namespace Assets.Scripts
             score.IncrementScore();
             progressTrack.IncrementProgress();
             streak.IncrementStreak();
+            MemeManager.Instance.ShowRandomWinMeme();
 
         }
         public void OnMismatchedPair()
         {
             score.ChangeUnitScore();
             streak.ResetStreak();
+            MemeManager.Instance.ShowRandomFailMeme();
         
         }
 
