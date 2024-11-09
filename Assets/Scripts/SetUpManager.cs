@@ -1,25 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class SetUpManager : MonoBehaviour
 {
-    public GameObject setupPanel; // Tham chiếu đến bảng setup (SetupPanel)
-    public Button playButton; // Tham chiếu đến nút Play Game
+    public Button button4x4;
+    public Button button6x6;
+    public Button button8x8;
+    public Button playStartButton;
 
     private void Start()
     {
-        // Đảm bảo bảng setup ẩn khi bắt đầu game
-        setupPanel.SetActive(false);
+        // Gán sự kiện cho các nút để chọn kích thước ma trận
+        button4x4.onClick.AddListener(() => SetDimension(4));
+        button6x6.onClick.AddListener(() => SetDimension(6));
+        button8x8.onClick.AddListener(() => SetDimension(8));
 
-        // Gán sự kiện cho nút Play Game
-        playButton.onClick.AddListener(ShowSetupPanel);
+        // Gán sự kiện cho nút PlayStartButton để bắt đầu trò chơi
+        playStartButton.onClick.AddListener(StartGame);
     }
 
-    // Hàm hiển thị bảng setup cấp độ
-    private void ShowSetupPanel()
+    // Hàm để thiết lập kích thước ma trận
+    private void SetDimension(int dimension)
     {
-        setupPanel.SetActive(true);
+        CardGrid.SelectedDimension = dimension; // Lưu kích thước ma trận vào CardGrid
+        Debug.Log("Selected Dimension: " + dimension);
+    }
+
+    // Hàm chuyển cảnh sang MainGame khi nhấn PlayStartButton
+    private void StartGame()
+    {
+        SceneManager.LoadScene("MainGameScene"); // Chuyển sang cảnh MainGame
     }
 }

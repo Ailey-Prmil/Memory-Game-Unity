@@ -1,19 +1,17 @@
+﻿using Assets.Scripts.Enums;
 using System;
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using Assets.Scripts.Enums;
-using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
-using Vector2 = UnityEngine.Vector2;
 
 namespace Assets.Scripts
 {
     public class CardGrid : MonoBehaviour, ICardObserver
     {
-        public int Dimension;
+        public static int SelectedDimension = 4; // Biến static để lưu kích thước ma trận từ SetUpManager
         public GameObject CardPrefab;
         private List<Card> Cards = new List<Card>();
         private List<Card> OpenCards = new List<Card>(2);
@@ -28,14 +26,16 @@ namespace Assets.Scripts
 
         void Awake()
         {
+            int dimension = SelectedDimension; // Lấy kích thước ma trận từ SelectedDimension
             GridWidth = GetComponent<RectTransform>().rect.width;
             Padding = 50f;
             XOffset = YOffset = 9f;
-            CardSize = (GridWidth - (Padding * 2) - (XOffset * (Dimension - 1))) / Dimension;
-            FormCardGrid();
+            CardSize = (GridWidth - (Padding * 2) - (XOffset * (dimension - 1))) / dimension;
+            FormCardGrid(dimension);
             InitializeCardFaces(GameManager.Instance.SpriteCollection);
-            AddCard();
+            AddCard(dimension);
         }
+
         void Start()
         {
             GetCard();
@@ -50,12 +50,11 @@ namespace Assets.Scripts
                 Cards[i].ResetCard();
                 Cards[i].SetCard(i, CardFaces[i], CardSize);
             }
-            
-            StartCoroutine(showAllCards(5, callback));
 
+            StartCoroutine(showAllCards(5, callback));
         }
 
-        void FormCardGrid()
+        void FormCardGrid(int dimension)
         {
             if (gridLayoutGroup == null)
             {
@@ -65,7 +64,7 @@ namespace Assets.Scripts
             gridLayoutGroup.spacing = new Vector2(XOffset, YOffset);
             gridLayoutGroup.cellSize = new Vector2(CardSize, CardSize);
             gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            gridLayoutGroup.constraintCount = Dimension;
+            gridLayoutGroup.constraintCount = dimension;
             gridLayoutGroup.padding = new RectOffset((int)Padding, (int)Padding, (int)Padding, (int)Padding);
         }
 
@@ -74,7 +73,7 @@ namespace Assets.Scripts
             spriteCollection = ShuffleCardFaces(spriteCollection);
             for (int times = 0; times < 2; times++) // add 2 times the same sprite
             {
-                for (int i = 0; i < (Dimension * Dimension) / 2; i++)
+                for (int i = 0; i < (SelectedDimension * SelectedDimension) / 2; i++)
                 {
                     CardFaces.Add(spriteCollection[i]);
                 }
@@ -94,9 +93,9 @@ namespace Assets.Scripts
             return list;
         }
 
-        void AddCard()
+        void AddCard(int dimension)
         {
-            for (int i = 0; i < Dimension * Dimension; i++)
+            for (int i = 0; i < dimension * dimension; i++)
             {
                 GameObject card = Instantiate(CardPrefab, GetComponent<RectTransform>(), false);
                 card.name = "Card-" + i;
@@ -117,18 +116,17 @@ namespace Assets.Scripts
 
         public IEnumerator showAllCards(float duration, Action callback)
         {
-            // faceUp must be false at first
-            yield return new WaitForSeconds(1f); // wait for load transition
-            
+            yield return new WaitForSeconds(1f);
+
             CountDownAnimation.StartCountdown((int)duration);
             foreach (Card card in Cards)
             {
-                card.AutoOpenCard(); // flip all cards open
+                card.AutoOpenCard();
             }
             yield return new WaitForSeconds(duration);
             foreach (Card card in Cards)
             {
-                card.AutoCloseCard(); // flip all cards closed
+                card.AutoCloseCard();
             }
             callback?.Invoke();
         }
@@ -163,7 +161,7 @@ namespace Assets.Scripts
             {
                 return;
             }
-            // Only run the card is flipped open
+
             if (OpenCards.Count < 2)
             {
                 OpenCards.Add(card);
@@ -175,6 +173,7 @@ namespace Assets.Scripts
                 CheckPair(firstCard, secondCard);
             }
         }
+
         public void OnNotify(MonoBehaviour publisher, object eventType)
         {
             Card card = publisher as Card;
@@ -188,7 +187,5 @@ namespace Assets.Scripts
                 OnCardFlipped(card);
             }
         }
-
-
     }
 }
