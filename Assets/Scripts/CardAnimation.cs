@@ -49,7 +49,7 @@ namespace Assets.Scripts
         private IEnumerator RotateCard(Action callback)
         {
             coroutineAllowed = false;
-            SoundManager.Instance.PlaySound("card-flipped", 0.5f);
+            SoundManager.Instance.PlaySound("card-flipped", 0.3f);
             if (!faceUp)
             {
                 // Open card
