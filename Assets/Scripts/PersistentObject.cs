@@ -6,7 +6,14 @@ namespace Assets.Scripts
     {
         void Awake()
         {
-            DontDestroyOnLoad(this.gameObject);
+            if (FindObjectsOfType<CloudTransition>().Length > 1)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(this);
+            }
         }
     }
 }

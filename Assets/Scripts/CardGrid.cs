@@ -16,7 +16,7 @@ namespace Assets.Scripts
         public int Dimension;
         public GameObject CardPrefab;
         private List<Card> Cards = new List<Card>();
-        public List<Card> OpenCards = new List<Card>(2);
+        private List<Card> OpenCards = new List<Card>(2);
         private List<Card> matchedCards = new List<Card>();
         private List<Sprite> CardFaces = new List<Sprite>();
         public Publisher EventManager = new Publisher();
@@ -137,6 +137,7 @@ namespace Assets.Scripts
         {
             if (firstCard == secondCard)
             {
+                SoundManager.Instance.PlaySound("card-matched", 1f);
                 firstCard.MatchCard();
                 secondCard.MatchCard();
                 matchedCards.Add(firstCard);

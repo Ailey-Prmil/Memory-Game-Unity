@@ -122,6 +122,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13461376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13461377}
+  - component: {fileID: 13461379}
+  - component: {fileID: 13461378}
+  m_Layer: 5
+  m_Name: StatusIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &13461377
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13461376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 920337126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -125, y: 125}
+  m_SizeDelta: {x: 250, y: 250}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &13461378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13461376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bbb02ff77db1c6343a38bdb43ba2e257, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &13461379
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13461376}
+  m_CullTransparentMesh: 1
 --- !u!1 &81889773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,8 +1531,13 @@ MonoBehaviour:
   resultText: {fileID: 1253917872}
   scoreText: {fileID: 758689666}
   streakText: {fileID: 912766129}
+  mainCanvas: {fileID: 382797283}
+  mainCanvasGroup: {fileID: 0}
+  FailStatusIconSprites: []
+  WinStatusIconSprites: []
   RestartButton: {fileID: 1640337241}
   QuitButton: {fileID: 157902167}
+  StatusIconImage: {fileID: 13461378}
 --- !u!1 &706268558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4294345295519707889, guid: b1bf34708d67f39468e0abbab02ea7de, type: 3}
@@ -2016,6 +2096,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 13461377}
   - {fileID: 1253917871}
   - {fileID: 1640337239}
   - {fileID: 157902165}
@@ -8239,7 +8320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e896f1650517f78448fc6790f2eda929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimension: 2
+  Dimension: 6
   CardPrefab: {fileID: 9144906139821780330, guid: 06933c19971aa4a46b09b9d1a1e24a2f, type: 3}
   OpenCards: []
   CountDownAnimation: {fileID: 1113604410}

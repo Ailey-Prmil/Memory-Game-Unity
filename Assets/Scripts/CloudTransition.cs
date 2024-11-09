@@ -11,6 +11,7 @@ namespace Assets.Scripts
 
         void Awake()
         {
+
             CloudRectTransform = GetComponent<RectTransform>();
             Duration = 1.5f;
             CloudHeight = 1800f;

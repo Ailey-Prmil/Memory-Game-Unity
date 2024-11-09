@@ -112,6 +112,7 @@ namespace Assets.Scripts
             int streakCount = streak.GetStreakCount();
             if (streakCount % 2 == 0 && streakCount > 0)
             {
+                SoundManager.Instance.PlaySound("combo", 1f);
                 PopUpText.ShowText($"Combo {streakCount}");
             }
 

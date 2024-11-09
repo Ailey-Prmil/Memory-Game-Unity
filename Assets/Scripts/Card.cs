@@ -85,8 +85,6 @@ namespace Assets.Scripts
         public void MatchCard()
         {
             State = CardState.Matched;
-            // implement the disappearance of the card
-
         }
 
         public static bool operator == (Card card1, Card card2)

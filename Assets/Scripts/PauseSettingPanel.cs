@@ -16,6 +16,11 @@ public class PauseSettingPanel : OptionPanel
         base.Awake();
     }
 
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     void RestartGame()
     {
         ExitCanvas();

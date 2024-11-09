@@ -14,8 +14,13 @@ namespace Assets.Scripts
         protected virtual void Awake()
         {
             mainCanvasGroup = mainCanvas.GetComponent<CanvasGroup>();
-            exitButton.onClick.AddListener(ExitCanvas);
-            triggerButton.onClick.AddListener(OpenCanvas);
+            if (exitButton != null) exitButton.onClick.AddListener(ExitCanvas);
+            if (triggerButton != null) triggerButton.onClick.AddListener(OpenCanvas);
+            
+        }
+
+        void Start()
+        {
             gameObject.SetActive(false);
         }
 
