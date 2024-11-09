@@ -26,11 +26,6 @@ namespace Assets.Scripts
             
         }
 
-        void Start()
-        {
-            PlayButton.onClick.AddListener(StartGame);
-        }
-
         public void StartGame()
         {
             LoadScene("MainGameScene");

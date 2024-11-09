@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject setUpCanvas; // Tham chiếu tới SetUpCanvas
+
     void Start()
     {
-        GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+        // Kiểm tra xem setup canvas có được tham chiếu chưa
+        if (setUpCanvas != null)
         {
-            SceneTransitionManager.Instance.StartGame();
+            // Đảm bảo setup canvas ẩn ban đầu
+            setUpCanvas.SetActive(false);
+        }
+
+        // Thêm sự kiện khi nhấn nút Play
+        GetComponent<Button>().onClick.AddListener(() =>
+        {
+            if (setUpCanvas != null)
+            {
+                setUpCanvas.SetActive(true); // Bật setup canvas khi nhấn nút Play
+            }
         });
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
+

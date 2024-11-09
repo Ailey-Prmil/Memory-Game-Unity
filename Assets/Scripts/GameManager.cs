@@ -65,7 +65,7 @@ namespace Assets.Scripts
         public void OnGameStart()
         {
             IsGameRunning = false;
-            progressTrack.ResetProgress(cardGrid.Dimension);
+            progressTrack.ResetProgress(CardGrid.SelectedDimension);
             score.ResetScore();
             streak.ResetStreak();
             cardGrid.ResetGrid(() => { IsGameRunning = true;});
