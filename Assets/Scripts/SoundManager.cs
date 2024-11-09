@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource audioSource;
     private List<AudioClip> audioClips;
     private float defaultVolume = 0.05f;
+    private bool soundEnabled = true;
 
     void Awake()
     {
@@ -37,13 +38,18 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         PlayBackgroundMusic();
-        
     }
 
     public void PlayBackgroundMusic()
     {
         BackgroundMusic.Play();
     }
+
+    public void StopBackgroundMusic()
+    {
+        BackgroundMusic.Stop();
+    }
+
     public void AddButtonClickSound()
     {
         List<Button> buttons = new List<Button>(FindObjectsOfType<Button>());
@@ -56,14 +62,21 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(string audioName, float volume)
     {
-        AudioClip audioClip = audioClips.Find(clip => clip.name == audioName);
-        audioSource.volume = volume;
-        audioSource.PlayOneShot(audioClip);
+        if (soundEnabled)
+        {
+            AudioClip audioClip = audioClips.Find(clip => clip.name == audioName);
+            audioSource.volume = volume;
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 
-    public void StopSound()
+    public void DisableSound()
     {
-        audioSource.Stop();
+        soundEnabled = false;
+    }
+    public void EnableSound()
+    {
+        soundEnabled = true;
     }
 
     void OnDestroy()
