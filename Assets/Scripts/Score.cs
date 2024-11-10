@@ -1,32 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Interfaces;
-using TMPro;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+namespace Assets.Scripts
 {
-    private ScoreAnimation scoreAnimation;
-    private int Scores;
-    private ScoreUnitManager scoreUnitManager;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Score : MonoBehaviour
     {
-        scoreUnitManager = ScoreUnitManager.Instance;
-        scoreAnimation = GetComponent<ScoreAnimation>();
-        Scores = 0;
-    }
+        private ScoreAnimation scoreAnimation;
+        private int scores;
+        private ScoreUnitManager scoreUnitManager;
 
-    public void ChangeUnitScore()
-    {
-        scoreUnitManager.IncrementWrongMoves();
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            scoreUnitManager = ScoreUnitManager.Instance;
+        
+            scores = 0;
+        }
+
+        public void ChangeUnitScore()
+        {
+            scoreUnitManager.IncrementWrongMoves();
+        }
     
-    public void IncrementScore()
-    {
-        Scores += scoreUnitManager.ScoreUnit;
-        scoreAnimation.SetScore(Scores);
-        Debug.Log("Score: " + Scores);
+        public void IncrementScore()
+        {
+            scores += scoreUnitManager.ScoreUnit;
+            scoreAnimation.SetScore(scores);
+        }
+
+        public void AddBonus(int combo)
+        {
+            scores += combo * scoreUnitManager.ScoreUnit;
+            scoreAnimation.SetScore(scores);
+        }
+
+        public void ResetScore()
+        {
+            scores = 0;
+            if (scoreAnimation == null)
+            {
+                scoreAnimation = GetComponent<ScoreAnimation>();
+            }
+
+            scoreAnimation.SetScore(scores);
+        }
+
+        public int GetScores()
+        {
+            return scores;
+        }
+
+
     }
 }

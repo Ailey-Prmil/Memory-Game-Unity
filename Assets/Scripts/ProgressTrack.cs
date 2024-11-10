@@ -1,31 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ProgressTrack : MonoBehaviour
+namespace Assets.Scripts
 {
-    private int progress;
-    private int maxProgress;
-
-
-    public ProgressBarAnimation ProgressBarAnimation;
-
-    void Awake()
+    public class ProgressTrack : MonoBehaviour
     {
-        ProgressBarAnimation = GetComponent<ProgressBarAnimation>();
-    }
+        private int progress;
+        private int maxProgress;
 
-    public void SetMaxProgress(int Dimension)
-    {
-        maxProgress = Dimension*Dimension/2;
-        ProgressBarAnimation.progressBar.maxValue = maxProgress;
 
-    }
-    public void IncrementProgress()
-    {
-        progress++;
-        ProgressBarAnimation.SetProgress(progress);
-    }
+        public ProgressBarAnimation ProgressBarAnimation;
+
+        void Awake()
+        {
+            ProgressBarAnimation = GetComponent<ProgressBarAnimation>();
+        }
+
+        public void ResetProgress(int dimension)
+        {
+            progress = 0;
+            SetMaxProgress(dimension);
+            ProgressBarAnimation.SetProgress(progress);
+        }
+
+        public void SetMaxProgress(int dimension)
+        {
+            maxProgress = dimension*dimension/2;
+            Debug.Log("Max Progress: " + maxProgress);
+            ProgressBarAnimation.progressBar.maxValue = maxProgress;
+
+        }
+        public void IncrementProgress()
+        {
+            progress++;
+            ProgressBarAnimation.SetProgress(progress);
+        }
     
+    }
 }

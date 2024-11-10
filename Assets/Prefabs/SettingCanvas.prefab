@@ -890,9 +890,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9606fbcf87901d14d893746fffd0c7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingButton: {fileID: 1198197641173738190, guid: d88f418ba6ab1a9409c4d790e70b79a7, type: 3}
+  triggerButton: {fileID: 0}
   exitButton: {fileID: 6092017895891858041}
   mainCanvas: {fileID: 0}
+  mainCanvasGroup: {fileID: 0}
 --- !u!1 &5414077056146341340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1009,7 @@ GameObject:
   - component: {fileID: 54384237633585513}
   - component: {fileID: 7386977580674460631}
   - component: {fileID: 5339331648815501691}
+  - component: {fileID: 861062007388069625}
   m_Layer: 5
   m_Name: AudioSettingButtons
   m_TagString: Untagged
@@ -1098,6 +1100,26 @@ MonoBehaviour:
   m_Spacing: {x: 100, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!114 &861062007388069625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423220690860158064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc9e291bbcbde14bbe8601ef1c1d9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicButton: {fileID: 5962219977104080556}
+  soundButton: {fileID: 1803482114341720287}
+  musicIcon: {fileID: 620381827344692235}
+  soundIcon: {fileID: 3314733339579726227}
+  musicOnIcon: {fileID: 21300000, guid: 47f05f7bc9e19ca44a27eb02f7bb6079, type: 3}
+  musicOffIcon: {fileID: 21300000, guid: be3bf729a97357a49b89dca6bad8cb79, type: 3}
+  soundOnIcon: {fileID: 21300000, guid: 3f6279c0e7fa89d42a476cfa97ccb284, type: 3}
+  soundOffIcon: {fileID: 21300000, guid: da4d65f2cd4317c4c9bb2078d532b8be, type: 3}
 --- !u!1 &6965982535511615712
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,43 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class ScoreUnitManager
+namespace Assets.Scripts
 {
-    private static ScoreUnitManager instance;
-
-    public int ScoreUnit
+    public class ScoreUnitManager
     {
-        get;
-        private set;
-    }
-    private int wrongMoves;
+        private static ScoreUnitManager instance;
 
-    ScoreUnitManager()
-    {
-        ScoreUnit = 20;
-        wrongMoves = 0;
-    }
-
-    public static ScoreUnitManager Instance
-    {
-        get
+        public int ScoreUnit
         {
-            if (instance == null)
-            {
-                instance = new ScoreUnitManager();
-            }
-
-            return instance;
+            get;
+            private set;
         }
-    }
+        private int wrongMoves;
 
-    public void IncrementWrongMoves()
-    {
-        wrongMoves++;
-        if (wrongMoves is 5 or 10 or 15) ScoreUnit -= 5;
-        Debug.Log(wrongMoves);
-    }
+        ScoreUnitManager()
+        {
+            ResetScore();
+        }
 
+        public static ScoreUnitManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ScoreUnitManager();
+                }
+
+                return instance;
+            }
+        }
+        public void ResetScore()
+        {
+            ScoreUnit = 20;
+            wrongMoves = 0;
+        }
+        public void IncrementWrongMoves()
+        {
+            wrongMoves++;
+            if (wrongMoves is 5 or 10 or 15) ScoreUnit -= 5;
+            Debug.Log(wrongMoves);
+        }
+
+    }
 }

@@ -1,106 +1,110 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using Assets.Scripts;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Interfaces;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-public class Card : MonoBehaviour
+namespace Assets.Scripts
 {
-    public enum CardState
+    public class Card : MonoBehaviour
     {
-        Hidden,
-        Visible,
-        Matched
-    }
-
-    [HideInInspector] public int id;
-    private CardAnimation cardAnimation;
-    private RectTransform parentRect;
-    private SpriteRenderer spriteRenderer;
-    private CardState state;
-
-    public CardState State
-    {
-        get { return state; }
-        private set
+        public enum CardState
         {
-            state = value;
-            EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
+            Hidden,
+            Visible,
+            Matched
         }
-    }
-    public Publisher EventManager = new Publisher();
 
-    private void Awake()
-    {
-        cardAnimation = GetComponent<CardAnimation>();
-        parentRect = GetComponent<RectTransform>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        state = CardState.Hidden;
-        cardAnimation.OnCardFlipped += OnCardFlippedHandler;
-    }
+        public int id;
+        public CardAnimation cardAnimation;
+        public RectTransform parentRect;
+        public SpriteRenderer spriteRenderer;
+        private CardState state;
 
-    private void OnCardFlippedHandler()
-    {
-        if (cardAnimation.faceUp)
+        public CardState State
         {
-            State = CardState.Visible;
+            get { return state; }
+            private set
+            {
+                state = value;
+                EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
+            }
         }
-        else
+        public Publisher EventManager = new Publisher();
+
+        private void Awake()
         {
-            State = CardState.Hidden;
+            cardAnimation = GetComponent<CardAnimation>();
+            parentRect = GetComponent<RectTransform>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            state = CardState.Hidden;
+            cardAnimation.OnCardFlipped += OnCardFlippedHandler;
         }
-    }
-
-    public void AutoFlipCard()
-    {
-        cardAnimation.AutoFlipCard();
-    }
-
-    public void OpenCard()
-    {
-        if (!cardAnimation.faceUp)
+        public void ResetCard()
         {
-            cardAnimation.FlipCard();
+            state = CardState.Hidden; // not trigger observer
+            AutoCloseCard();
         }
-    }
 
-
-    public void CloseCard()
-    {
-        if (cardAnimation.faceUp)
+        private void OnCardFlippedHandler()
         {
-            cardAnimation.FlipCard();
+            if (cardAnimation.faceUp)
+            {
+                State = CardState.Visible;
+            }
+            else
+            {
+                State = CardState.Hidden;
+            }
         }
+
+        public void AutoOpenCard()
+        {
+            Debug.Log("AutoOpenCard");
+            if (!cardAnimation.faceUp)
+            {
+                cardAnimation.AutoFlipCard();
+            }
+        }
+
+
+        public void CloseCard()
+        {
+            if (cardAnimation.faceUp)
+            {
+                cardAnimation.FlipCard();
+            }
+        }
+
+        public void AutoCloseCard()
+        {
+            Debug.Log("AutoCloseCard");
+            if (cardAnimation.faceUp)
+            {
+                cardAnimation.FlipCard();
+            }
+        }
+
+        public void MatchCard()
+        {
+            State = CardState.Matched;
+        }
+
+        public static bool operator == (Card card1, Card card2)
+        {
+            if (ReferenceEquals(card1, null) || ReferenceEquals(card2, null)) { return false; }
+            return card1.cardAnimation.CardFront == card2.cardAnimation.CardFront;
+        }
+
+        public static bool operator !=(Card card1, Card card2)
+        {
+            return !(card1 == card2);
+        }
+
+        public void SetCard(int id, Sprite cardFront, float cellSize)
+        {
+            this.id = id;
+            cardAnimation.CardFront = cardFront;
+            float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
+            parentRect.localScale = new Vector3(scale, scale, 1);
+        }
+
     }
-
-    public void MatchCard()
-    {
-        State = CardState.Matched;
-        // implement the disappearance of the card
-
-    }
-
-    public static bool operator == (Card card1, Card card2)
-    {
-        if (ReferenceEquals(card1, null) || ReferenceEquals(card2, null)) { return false; }
-        return card1.cardAnimation.CardFront == card2.cardAnimation.CardFront;
-    }
-
-    public static bool operator !=(Card card1, Card card2)
-    {
-        return !(card1 == card2);
-    }
-
-    public void SetCard(int id, Sprite cardFront, float cellSize)
-    {
-        this.id = id;
-        cardAnimation.CardFront = cardFront;
-        float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
-        parentRect.localScale = new Vector3(scale, scale, 1);
-    }
-
 }

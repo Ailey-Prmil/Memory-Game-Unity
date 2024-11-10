@@ -34,5 +34,10 @@
         {
             return streakCount;
         }
+
+        public int GetMaxStreakCount()
+        {
+            return maxStreakCount;
+        }
     }
 }
