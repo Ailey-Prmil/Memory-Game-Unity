@@ -23,7 +23,7 @@ namespace Assets.Scripts
         private float CardSize;
         private float GridWidth, XOffset, YOffset;
         private float Padding;
-
+  
         void Awake()
         {
             int dimension = SelectedDimension; // Lấy kích thước ma trận từ SelectedDimension

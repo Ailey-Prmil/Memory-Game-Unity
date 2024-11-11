@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
@@ -16,6 +16,8 @@ namespace Assets.Scripts
         public PopUpTextAnimation PopUpText;
         public ResultPanel ResultPanel;
         public bool IsGameRunning;
+        public ParticleSystem sparkleEffect;
+
 
         void Awake()
         {
@@ -113,6 +115,8 @@ namespace Assets.Scripts
                 SoundManager.Instance.PlaySound("combo", 1f);
                 PopUpText.ShowText($"Combo {streakCount}");
                 score.AddBonus(streakCount);
+
+                sparkleEffect.Play();
             }
 
             if (eventType is GridEventType.AllCardsMatched)
