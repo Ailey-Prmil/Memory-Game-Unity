@@ -23,6 +23,7 @@ namespace Assets.Scripts
         private float CardSize;
         private float GridWidth, XOffset, YOffset;
         private float Padding;
+        public GameObject sparkleEffectPrefab;
 
         void Awake()
         {
@@ -138,9 +139,19 @@ namespace Assets.Scripts
                 SoundManager.Instance.PlaySound("card-matched", 1f);
                 firstCard.MatchCard();
                 secondCard.MatchCard();
+
+                // Tạo hiệu ứng SparkleEffect tại vị trí của mỗi thẻ
+                GameObject sparkle1 = Instantiate(sparkleEffectPrefab, firstCard.transform.position, Quaternion.identity);
+                GameObject sparkle2 = Instantiate(sparkleEffectPrefab, secondCard.transform.position, Quaternion.identity);
+
+                // Hủy hiệu ứng sau một thời gian ngắn (ví dụ: 1 giây)
+                Destroy(sparkle1, 1.0f); // Điều chỉnh thời gian nếu cần
+                Destroy(sparkle2, 1.0f);
+
                 matchedCards.Add(firstCard);
                 matchedCards.Add(secondCard);
                 EventManager.NotifyObservers(this, GridEventType.CardMatched);
+
                 if (matchedCards.Count == Cards.Count)
                 {
                     EventManager.NotifyObservers(this, GridEventType.AllCardsMatched);
@@ -154,6 +165,7 @@ namespace Assets.Scripts
             }
             OpenCards.Clear();
         }
+
 
         public void OnCardFlipped(Card card)
         {
