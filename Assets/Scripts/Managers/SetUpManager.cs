@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Managers
 {
@@ -20,7 +21,7 @@ namespace Assets.Scripts.Managers
             button8x8.onClick.AddListener(() => SetDimension(8));
 
             // Gán sự kiện cho nút PlayStartButton để bắt đầu trò chơi
-            playStartButton.onClick.AddListener(StartGame);
+            playStartButton.onClick.AddListener(SceneTransitionManager.Instance.StartGame);
         }
 
         // Hàm để thiết lập kích thước ma trận
@@ -28,12 +29,6 @@ namespace Assets.Scripts.Managers
         {
             CardGrid.SelectedDimension = dimension; // Lưu kích thước ma trận vào CardGrid
             Debug.Log("Selected Dimension: " + dimension);
-        }
-
-        // Hàm chuyển cảnh sang MainGame khi nhấn PlayStartButton
-        private void StartGame()
-        {
-            SceneManager.LoadScene("MainGameScene"); // Chuyển sang cảnh MainGame
         }
     }
 }

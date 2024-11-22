@@ -10,7 +10,6 @@ namespace Assets.Scripts.Managers
     {
         public static SceneTransitionManager Instance { get; private set; }
         public CloudTransition CloudTransition;
-        public Button PlayButton;
 
         void Awake()
         {
