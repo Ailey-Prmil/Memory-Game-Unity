@@ -1,7 +1,8 @@
+using Assets.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.UI
 {
     public class OptionPanel : MonoBehaviour
     {

@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Animations
 {
     public class CardAnimation : MonoBehaviour
     {

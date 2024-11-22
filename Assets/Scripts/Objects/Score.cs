@@ -1,6 +1,8 @@
+using Assets.Scripts.Animations;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Objects
 {
     public class Score : MonoBehaviour
     {

@@ -1,13 +1,15 @@
-﻿using Assets.Scripts.Enums;
-using System;
-using Assets.Scripts.Interfaces;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Animations;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Interfaces;
+using Assets.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Objects
 {
     public class CardGrid : MonoBehaviour, ICardObserver
     {
@@ -17,7 +19,7 @@ namespace Assets.Scripts
         private List<Card> OpenCards = new List<Card>(2);
         private List<Card> matchedCards = new List<Card>();
         private List<Sprite> CardFaces = new List<Sprite>();
-        public Publisher EventManager = new Publisher();
+        public EventManager EventManager = new EventManager();
         private GridLayoutGroup gridLayoutGroup;
         public CountDownAnimation CountDownAnimation;
         private float CardSize;
@@ -179,7 +181,7 @@ namespace Assets.Scripts
             Card card = publisher as Card;
             if (card == null)
             {
-                Debug.LogError("Publisher is not a Card!");
+                Debug.LogError("EventManager is not a Card!");
                 return;
             }
             if (card.State == Card.CardState.Visible)

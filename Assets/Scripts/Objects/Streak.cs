@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts
+﻿namespace Assets.Scripts.Objects
 {
     public class Streak
     {
