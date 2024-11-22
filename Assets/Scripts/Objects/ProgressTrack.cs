@@ -1,7 +1,7 @@
-using System;
+using Assets.Scripts.Animations;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Objects
 {
     public class ProgressTrack : MonoBehaviour
     {

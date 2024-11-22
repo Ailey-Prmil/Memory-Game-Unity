@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
-    public class Publisher:ISubject
+    public class EventManager:ISubject
     {
         private List<IObserver> observers = new List<IObserver>();
 

@@ -1,15 +1,15 @@
 using System.Collections;
+using Assets.Scripts.Objects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
     public class SceneTransitionManager : MonoBehaviour
     {
         public static SceneTransitionManager Instance { get; private set; }
         public CloudTransition CloudTransition;
-        public Button PlayButton;
 
         void Awake()
         {

@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Animations;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Objects;
+using Assets.Scripts.UI;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
     public class GameManager : MonoBehaviour, IGridObserver
     {

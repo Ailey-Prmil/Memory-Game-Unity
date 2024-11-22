@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Animations
 {
     public class ScoreAnimation : MonoBehaviour
     {

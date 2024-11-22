@@ -1,7 +1,9 @@
+using Assets.Scripts.Animations;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Objects
 {
     public class Card : MonoBehaviour
     {
@@ -27,7 +29,7 @@ namespace Assets.Scripts
                 EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
             }
         }
-        public Publisher EventManager = new Publisher();
+        public EventManager EventManager = new EventManager();
 
         private void Awake()
         {
