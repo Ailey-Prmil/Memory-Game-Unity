@@ -21,7 +21,7 @@ namespace Assets.Scripts.Managers
             button8x8.onClick.AddListener(() => SetDimension(8));
 
             // Gán sự kiện cho nút PlayStartButton để bắt đầu trò chơi
-            playStartButton.onClick.AddListener(SceneTransitionManager.Instance.StartGame);
+            playStartButton.onClick.AddListener(AppManager.Instance.StartGame);
         }
 
         // Hàm để thiết lập kích thước ma trận

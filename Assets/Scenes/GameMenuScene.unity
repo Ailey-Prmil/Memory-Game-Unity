@@ -3839,7 +3839,7 @@ GameObject:
   - component: {fileID: 1996493435}
   - component: {fileID: 1996493434}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: AppManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

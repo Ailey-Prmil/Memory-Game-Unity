@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
 {
-    public class SceneTransitionManager : MonoBehaviour
+    public class AppManager : MonoBehaviour
     {
-        public static SceneTransitionManager Instance { get; private set; }
+        public static AppManager Instance { get; private set; }
         public CloudTransition CloudTransition;
-        public OptionPanel SettingPanel;
+
 
         void Awake()
         {
@@ -26,6 +26,20 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (SceneManager.GetActiveScene().name == "GameMenuScene")
+                {
+                    Application.Quit();
+                }
+                else
+                {
+                    ExitGame();
+                }
+            }
+        }
         public void StartGame()
         {
             LoadScene("MainGameScene");

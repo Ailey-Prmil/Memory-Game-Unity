@@ -38,7 +38,7 @@ namespace Assets.Scripts.UI
             });
             QuitButton.onClick.AddListener(() =>
             {
-                SceneTransitionManager.Instance.ExitGame();
+                AppManager.Instance.ExitGame();
             });
             StatusIconImage.GetComponent<Image>();
             gameObject.SetActive(false);
