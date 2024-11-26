@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Scripts.Data;
 using Assets.Scripts.Objects;
 using Assets.Scripts.UI;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace Assets.Scripts.Managers
             {
                 if (SceneManager.GetActiveScene().name == "GameMenuScene")
                 {
+                    ResultDataManager.Instance.SaveResultData(); // Save data before quitting
                     Application.Quit();
                 }
                 else
@@ -48,7 +50,6 @@ namespace Assets.Scripts.Managers
         public void ExitGame()
         {
             LoadScene("GameMenuScene");
-            
         }
 
         public void LoadScene(string sceneName)

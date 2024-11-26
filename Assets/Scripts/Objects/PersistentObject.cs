@@ -1,7 +1,6 @@
-using Assets.Scripts.Objects;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Objects
 {
     public class PersistentObject : MonoBehaviour
     {

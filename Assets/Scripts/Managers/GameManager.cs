@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Animations;
+using Assets.Scripts.Data;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Objects;
@@ -78,6 +79,8 @@ namespace Assets.Scripts.Managers
         public void OnGameOver(bool isWin)
         {
             IsGameRunning = false;
+            GameResult result = new GameResult(System.DateTime.Now, score.GetScores(), streak.GetMaxStreakCount());
+            ResultDataManager.Instance.AddResultData(result);
             ResultPanel.ShowResultPanel(isWin, score.GetScores(), streak.GetMaxStreakCount());
         }
 

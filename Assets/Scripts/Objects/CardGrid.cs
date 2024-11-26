@@ -109,7 +109,7 @@ namespace Assets.Scripts.Objects
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Card");
             for (int i = 0; i < objects.Length; i++)
             {
-                Debug.Log("Card-" + i);
+ 
                 Cards.Add(objects[i].GetComponent<Card>());
                 Cards[i].SetCard(i, CardFaces[i], CardSize);
                 Cards[i].EventManager.AddObserver(this);
