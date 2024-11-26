@@ -36,7 +36,7 @@ namespace Assets.Scripts.Managers
                 }
                 else
                 {
-                    ExitGame();
+                    PauseSettingPanel.Instance.OpenCanvas();
                 }
             }
         }

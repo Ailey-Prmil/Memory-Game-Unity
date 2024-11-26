@@ -807,7 +807,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
@@ -847,9 +847,10 @@ MonoBehaviour:
   exitButton: {fileID: 810102006}
   triggerButton: {fileID: 1223605363}
   mainCanvasGroup: {fileID: 382797284}
-  mainPanel: {fileID: 0}
+  mainPanel: {fileID: 326599021}
   RestartButton: {fileID: 329709005}
   QuitButton: {fileID: 1190097391}
+  MessagePanelPrefab: {fileID: 5503288442585210782, guid: 7dd6155bc6dae3f4f8fa24a779f7b1d4, type: 3}
 --- !u!1 &382797283
 GameObject:
   m_ObjectHideFlags: 0
