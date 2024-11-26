@@ -15,9 +15,10 @@ namespace Assets.Scripts.UI
             base.Awake();
         }
 
-        void Start()
+        protected override void Start()
         {
             gameObject.SetActive(false);
+            mainPanel = gameObject;
         }
 
         void RestartGame()

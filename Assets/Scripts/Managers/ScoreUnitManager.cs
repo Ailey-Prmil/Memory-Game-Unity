@@ -39,7 +39,6 @@ namespace Assets.Scripts.Managers
         {
             wrongMoves++;
             if (wrongMoves is 5 or 10 or 15) ScoreUnit -= 5;
-            Debug.Log(wrongMoves);
         }
 
     }

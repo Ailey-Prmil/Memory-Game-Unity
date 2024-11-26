@@ -1,11 +1,12 @@
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
 {
-    public class AudioSettingManager : MonoBehaviour
+    public class SettingManager : OptionPanel
     {
-        public AudioSettingManager Instance { get; private set; }
+        public static SettingManager Instance { get; private set; }
         public Button musicButton;      
         public Button soundButton;      
         public Image musicIcon;
@@ -18,12 +19,13 @@ namespace Assets.Scripts.Managers
         private bool isMusicOn = true;  
         private bool isSoundOn = true;
 
-        void Awake()
+        protected override void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
+                base.Awake();
             }
             else
             {
@@ -31,18 +33,17 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        void Start()
+        protected override void Start()
         {
-       
             musicButton.onClick.AddListener(ToggleMusic);
             soundButton.onClick.AddListener(ToggleSound);
-
             UpdateIcons();
+            base.Start();
+
         }
 
         void ToggleMusic()
         {
-        
             isMusicOn = !isMusicOn;
             if (isMusicOn)
             {
@@ -73,7 +74,6 @@ namespace Assets.Scripts.Managers
 
         void UpdateIcons()
         {
-        
             musicIcon.sprite = isMusicOn ? musicOnIcon : musicOffIcon;
             soundIcon.sprite = isSoundOn ? soundOnIcon : soundOffIcon;
         }

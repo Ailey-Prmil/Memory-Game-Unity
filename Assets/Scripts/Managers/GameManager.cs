@@ -40,25 +40,13 @@ namespace Assets.Scripts.Managers
             SpriteCollection.Remove(backSprite);
 
             score = FindObjectOfType<Score>();
-            if (score == null)
-            {
-                Debug.LogError("Score component not found in the scene!");
-            }
 
             progressTrack = FindObjectOfType<ProgressTrack>();
-            if (progressTrack == null)
-            {
-                Debug.LogError("ProgressTrack component not found in the scene!");
-            }
 
 
             streak = Streak.CreateInstance();
 
             cardGrid = FindObjectOfType<CardGrid>();
-            if (cardGrid == null)
-            {
-                Debug.LogError("CardGrid component not found in the scene!");
-            }
         }
 
         void Start()

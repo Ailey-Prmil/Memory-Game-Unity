@@ -1,5 +1,6 @@
 using System.Collections;
 using Assets.Scripts.Objects;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Managers
     {
         public static SceneTransitionManager Instance { get; private set; }
         public CloudTransition CloudTransition;
+        public OptionPanel SettingPanel;
 
         void Awake()
         {
@@ -22,8 +24,6 @@ namespace Assets.Scripts.Managers
             {
                 Destroy(gameObject);
             }
-
-            
         }
 
         public void StartGame()
@@ -34,6 +34,7 @@ namespace Assets.Scripts.Managers
         public void ExitGame()
         {
             LoadScene("GameMenuScene");
+            
         }
 
         public void LoadScene(string sceneName)
@@ -46,6 +47,7 @@ namespace Assets.Scripts.Managers
             yield return StartCoroutine(CloudTransition.CloudInTransition());
             SceneManager.LoadScene(sceneName);
             yield return StartCoroutine(CloudTransition.CloudOutTransition());
+            SettingManager.Instance.mainCanvasGroup = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<CanvasGroup>();
         }
     }
 }

@@ -27,8 +27,7 @@ namespace Assets.Scripts.Managers
         // Hàm để thiết lập kích thước ma trận
         private void SetDimension(int dimension)
         {
-            CardGrid.SelectedDimension = dimension; // Lưu kích thước ma trận vào CardGrid
-            Debug.Log("Selected Dimension: " + dimension);
+            CardGrid.SelectedDimension = dimension; // Lưu kích thước ma trận vào CardGri
         }
     }
 }

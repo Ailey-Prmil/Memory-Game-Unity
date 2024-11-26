@@ -13,7 +13,6 @@ namespace Assets.Scripts.Objects
             Visible,
             Matched
         }
-
         public int id;
         public CardAnimation cardAnimation;
         public RectTransform parentRect;
@@ -59,7 +58,6 @@ namespace Assets.Scripts.Objects
 
         public void AutoOpenCard()
         {
-            Debug.Log("AutoOpenCard");
             if (!cardAnimation.faceUp)
             {
                 cardAnimation.AutoFlipCard();
@@ -77,7 +75,6 @@ namespace Assets.Scripts.Objects
 
         public void AutoCloseCard()
         {
-            Debug.Log("AutoCloseCard");
             if (cardAnimation.faceUp)
             {
                 cardAnimation.FlipCard();

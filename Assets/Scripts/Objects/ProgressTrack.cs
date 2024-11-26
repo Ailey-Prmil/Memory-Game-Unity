@@ -26,7 +26,6 @@ namespace Assets.Scripts.Objects
         public void SetMaxProgress(int dimension)
         {
             maxProgress = dimension*dimension/2;
-            Debug.Log("Max Progress: " + maxProgress);
             ProgressBarAnimation.progressBar.maxValue = maxProgress;
 
         }
