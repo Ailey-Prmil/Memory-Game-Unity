@@ -11,7 +11,8 @@ namespace Assets.Scripts.Managers
         public AudioSource BackgroundMusic;
         private AudioSource audioSource;
         private List<AudioClip> audioClips;
-        private bool soundEnabled = true;
+        private bool soundEnabled;
+        private bool musicEnabled;
 
         void Awake()
         {
@@ -22,6 +23,10 @@ namespace Assets.Scripts.Managers
                 audioSource = GetComponent<AudioSource>();
                 audioClips = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds"));
                 SceneManager.sceneLoaded += OnSceneLoaded;
+                soundEnabled = PlayerPrefs.GetInt("soundEnabled", 1) == 1;
+                musicEnabled = PlayerPrefs.GetInt("musicEnabled", 1) == 1;
+
+
             }
             else
             {
@@ -35,17 +40,19 @@ namespace Assets.Scripts.Managers
         }
         void Start()
         {
-            PlayBackgroundMusic();
+            if (musicEnabled) PlayBackgroundMusic();
         }
 
         public void PlayBackgroundMusic()
         {
             BackgroundMusic.Play();
+            musicEnabled = true;
         }
 
         public void StopBackgroundMusic()
         {
             BackgroundMusic.Stop();
+            musicEnabled = false;
         }
 
         public void AddButtonClickSound()
@@ -81,6 +88,8 @@ namespace Assets.Scripts.Managers
         { 
             // Unsubscribe from scene loaded event to avoid memory leaks
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            PlayerPrefs.SetInt("soundEnabled", soundEnabled ? 1 : 0);
+            PlayerPrefs.SetInt("musicEnabled", musicEnabled ? 1 : 0);
         }
     }
 }
