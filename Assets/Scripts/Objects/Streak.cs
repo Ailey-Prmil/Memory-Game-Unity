@@ -28,6 +28,9 @@
         public void ResetStreak()
         {
             streakCount = 0;
+        }
+        public void ResetMaxStreak()
+        {
             maxStreakCount = 0;
         }
 

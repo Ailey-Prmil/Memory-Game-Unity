@@ -62,6 +62,7 @@ namespace Assets.Scripts.Managers
             progressTrack.ResetProgress(CardGrid.SelectedDimension);
             score.ResetScore();
             streak.ResetStreak();
+            streak.ResetMaxStreak();
             cardGrid.ResetGrid(() => { IsGameRunning = true;});
             
         }

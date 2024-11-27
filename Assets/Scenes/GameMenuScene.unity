@@ -122,6 +122,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &6750402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1203502910381738923, guid: 8a36df3d102258f4dae7d8d2fc1a251f, type: 3}
+  m_PrefabInstance: {fileID: 3844059651891135875}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9569956
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +684,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceAmplitude: 10
   bounceFrequency: 2
+--- !u!114 &83117650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8698228351361569584, guid: 8a36df3d102258f4dae7d8d2fc1a251f, type: 3}
+  m_PrefabInstance: {fileID: 3844059651891135875}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &111981068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2497,6 +2519,7 @@ GameObject:
   - component: {fileID: 725811827}
   - component: {fileID: 725811826}
   - component: {fileID: 725811830}
+  - component: {fileID: 725811831}
   m_Layer: 5
   m_Name: RecordDisplayCanvas
   m_TagString: Untagged
@@ -2604,6 +2627,28 @@ MonoBehaviour:
   triggerButton: {fileID: 1581520427}
   mainCanvasGroup: {fileID: 887320108}
   mainPanel: {fileID: 1522897654}
+--- !u!114 &725811831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725811825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbbe2ab24abd434fbf516a8bd093bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitButton: {fileID: 1783924455}
+  triggerButton: {fileID: 1581520427}
+  mainCanvasGroup: {fileID: 887320108}
+  mainPanel: {fileID: 1522897654}
+  DataDisplayPanel: {fileID: 1262251090}
+  backButton: {fileID: 1962907859}
+  GridDimensionButtons: []
+  ScoreText: {fileID: 83117650}
+  TimeText: {fileID: 6750402}
+  StreakText: {fileID: 899299890}
 --- !u!1 &839350793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,6 +3039,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8932819455996060439, guid: 8a36df3d102258f4dae7d8d2fc1a251f, type: 3}
   m_PrefabInstance: {fileID: 3844059651891135875}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &899299890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5201725050623993110, guid: 8a36df3d102258f4dae7d8d2fc1a251f, type: 3}
+  m_PrefabInstance: {fileID: 3844059651891135875}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &903084206
 GameObject:
   m_ObjectHideFlags: 0
