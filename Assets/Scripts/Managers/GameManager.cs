@@ -80,7 +80,7 @@ namespace Assets.Scripts.Managers
         {
             IsGameRunning = false;
             GameResult result = new GameResult(System.DateTime.Now, score.GetScores(), streak.GetMaxStreakCount());
-            ResultDataManager.Instance.AddResultData(result);
+            ResultDataManager.Instance.AddResultData(result, CardGrid.SelectedDimension);
             ResultPanel.ShowResultPanel(isWin, score.GetScores(), streak.GetMaxStreakCount());
         }
 
