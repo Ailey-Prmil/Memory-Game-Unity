@@ -79,7 +79,7 @@ namespace Assets.Scripts.Managers
         {
             if (gridDim != 4 && gridDim != 6 && gridDim != 8)
             {
-                Debug.LogError("Invalid grid dimension: " + gridDim);
+
                 return;
             }
 
@@ -98,7 +98,6 @@ namespace Assets.Scripts.Managers
         public List<GameResult> GetTopResults(int count, int gridDim)
         {
             // Return top results
-            Debug.Log(ResultList[gridDim].Count);
             var sortedGameResultList = ResultList[gridDim].OrderByDescending(gr => gr.Score).ToList();
             return sortedGameResultList.GetRange(0, sortedGameResultList.Count >= count ? count : sortedGameResultList.Count);
         }

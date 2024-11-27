@@ -19,6 +19,7 @@ namespace Assets.Scripts.Managers
             button4x4.onClick.AddListener(() => SetDimension(4));
             button6x6.onClick.AddListener(() => SetDimension(6));
             button8x8.onClick.AddListener(() => SetDimension(8));
+            SetDimension(4);
 
             // Gán sự kiện cho nút PlayStartButton để bắt đầu trò chơi
             playStartButton.onClick.AddListener(AppManager.Instance.StartGame);
