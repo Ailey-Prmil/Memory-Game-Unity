@@ -16,7 +16,6 @@ namespace Assets.Scripts.Managers
                 if (instance == null)
                 {
                     instance = new ResultDataManager();
-                    instance.LoadResultData();
                 }
                 return instance;
             }
@@ -36,6 +35,7 @@ namespace Assets.Scripts.Managers
                 {6, ResultList6x6},
                 {8, ResultList8x8}
             };
+            LoadResultData();
         }
 
         public void LoadResultData()
@@ -70,6 +70,7 @@ namespace Assets.Scripts.Managers
             resultData.Results6x6 = ResultList6x6;
             resultData.Results8x8 = ResultList8x8;
             string json = JsonUtility.ToJson(resultData, true);
+
             File.WriteAllText(filePath, json);
 
         }
@@ -97,7 +98,8 @@ namespace Assets.Scripts.Managers
         public List<GameResult> GetTopResults(int count, int gridDim)
         {
             // Return top results
-            var sortedGameResultList = ResultList[gridDim].OrderBy(gr => gr.Score).ToList();
+            Debug.Log(ResultList[gridDim].Count);
+            var sortedGameResultList = ResultList[gridDim].OrderByDescending(gr => gr.Score).ToList();
             return sortedGameResultList.GetRange(0, sortedGameResultList.Count >= count ? count : sortedGameResultList.Count);
         }
 

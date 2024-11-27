@@ -6,13 +6,13 @@ namespace Assets.Scripts.Data
     public class GameResult
     {
         public int Id;
-        public DateTime DateTime;
+        public string Date;
         public int Score;
         public int Streak;
 
         public GameResult(DateTime dateTime, int score, int streak)
         {
-            DateTime = dateTime;
+            Date = dateTime.ToString("dd MMM yyyy");
             Score = score;
             Streak = streak;
         }
