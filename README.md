@@ -3,9 +3,9 @@ A simple but challenging game perfect for break time while insisting in powering
 
 ## Table of Contents
 - [Demo](#demo)
-- [Highlight Features](#highlight-features-)
+- [Highlight Features](#highlight-features)
 - [Installation](#installation)
-- [Development]()
+- [Development](#development)
 - [Team]()
 - [License]()
 - [Acknowledgements](#acknowledgements)
@@ -46,7 +46,16 @@ Download this game within 3 easy steps:
 > User may have to turn off the Virus&Threat Protection to download the game,
 
 ## Development
-
+Most scripts and relevant game objects are in folder [`Asset/`](./Asset)
+- **Animations**: includes all the animation controllers created via Unity Editor, usually for basic and static animations such as Button Transition,...
+- **Prefabs**: includes all the reusable objects or dynamic objects of the game.
+- **Resources**: includes all the fonts, soundtracks, images or icons used within the game.
+- **Scenes**: includes 2 main scenes of the game.
+- **Scripts**: includes all the logic of the game, which is further divided into 7 subfolders: Animations *(script-based)*, Data, Enums, Interfaces, Managers, Objects and UI.
+  - Data and Enum: includes scripts specifying relevant data format and types for particular object (usually event types)
+  - Objects and UI: includes scripts for objects and UI elements within the game. Most of these scripts are inherited from MonoBehaviour Class to implement  the behaviour of a certain element in the game.
+  - Managers: Many Managers are created to control objects and UI element together. All of these managers are of `Singleton Design Pattern` to maintain consistency and ease.
+  - Interfaces: Blueprints are created to implement the `Observer Design Pattern` within the game.
 
 ## Acknowledgements
 Music: The Cutest Bunny by Shane Ivers - https://www.silvermansound.com
