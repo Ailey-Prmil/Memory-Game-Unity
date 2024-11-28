@@ -38,7 +38,7 @@ namespace Assets.Scripts.Managers
         public void IncrementWrongMoves()
         {
             wrongMoves++;
-            if (wrongMoves is 5 or 10 or 15) ScoreUnit -= 5;
+            if (wrongMoves > 5 & wrongMoves < 15) ScoreUnit--;
         }
 
     }

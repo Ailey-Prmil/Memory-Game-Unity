@@ -1,7 +1,6 @@
 # Memory Card Matching Game :sparkles:
 A simple but challenging game perfect for break time while insisting in powering up your memory. :magic_wand:
 
----
 ## Table of Contents
 - [Demo](#demo)
 - [Highlight Features](#highlight-features-)

@@ -105,12 +105,11 @@ namespace Assets.Scripts.Managers
             else if (eventType is GridEventType.CardFailed) OnMismatchedPair();
 
             int streakCount = streak.GetStreakCount();
+            if (streakCount > 1) score.AddBonus(streakCount);
             if (streakCount % 2 == 0 && streakCount > 0)
             {
                 SoundManager.Instance.PlaySound("combo", 1f);
                 PopUpText.ShowText($"Combo {streakCount}");
-                score.AddBonus(streakCount);
-
                 sparkleEffect.Play();
             }
 
