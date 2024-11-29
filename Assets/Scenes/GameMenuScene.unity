@@ -385,10 +385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85424f78669c35c449dce6a93e857e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button4x4: {fileID: 1898624107}
-  button6x6: {fileID: 9569958}
-  button8x8: {fileID: 193105391}
-  playStartButton: {fileID: 495669250}
+  Button4X4: {fileID: 1898624107}
+  Button6X6: {fileID: 9569958}
+  Button8X8: {fileID: 193105391}
+  PlayStartButton: {fileID: 495669250}
 --- !u!1 &61994239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5881,6 +5881,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMusic: {fileID: 474795513}
+  soundEnabled: 0
+  musicEnabled: 0
 --- !u!4 &1895051109
 Transform:
   m_ObjectHideFlags: 0
