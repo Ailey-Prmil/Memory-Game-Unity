@@ -77,8 +77,8 @@ This folder includes all the logic of the game, which is further divided into 7 
 ## Team :busts_in_silhouette:
 | Name | StudentID | Profile |
 | --- | --- | --- |
-| Lam Mai Tuyen | 22521629 | @Ailey-Prmil |
-|Nguyen Thi Thu Uyen | 22521643 | @Uyen324 |
+| Lam Mai Tuyen | 22521629 | [@Ailey-Prmil](https://github.com/Ailey-Prmil) |
+|Nguyen Thi Thu Uyen | 22521643 | [@Uyen324](https://github.com/Uyen324) |
 
 ## Acknowledgements
 ### Soundtracks
