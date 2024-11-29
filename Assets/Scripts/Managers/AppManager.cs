@@ -9,6 +9,7 @@ using UnityEngine.UI;
 namespace Assets.Scripts.Managers
 {
     public class AppManager : MonoBehaviour
+    // App manager manages the transitions between scenes (game menu and main game) and whether to quit the application
     {
         public static AppManager Instance { get; private set; }
         public CloudTransition CloudTransition;

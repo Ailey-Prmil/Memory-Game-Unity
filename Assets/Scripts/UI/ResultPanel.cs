@@ -51,11 +51,11 @@ namespace Assets.Scripts.UI
             resultText.text = isWin ? "SUCCESS" : "FAILED";
             if (isWin)
             {
-                SoundManager.Instance.PlaySound("game-success", 1f);
+                SoundManager.Instance.PlayWinSound();
             }
             else
             {
-                SoundManager.Instance.PlaySound("game-failed", 1f);
+                SoundManager.Instance.PlayLoseSound();
             }
             scoreText.text = score.ToString();
             streakText.text = streak.ToString();

@@ -13,26 +13,34 @@ namespace Assets.Scripts.Objects
 {
     public class CardGrid : MonoBehaviour, ICardObserver
     {
-        public static int SelectedDimension = 4; // Biến static để lưu kích thước ma trận từ SetUpManager
-        public GameObject CardPrefab;
-        private List<Card> Cards = new List<Card>();
-        private List<Card> OpenCards = new List<Card>(2);
-        private List<Card> matchedCards = new List<Card>();
-        private List<Sprite> CardFaces = new List<Sprite>();
-        public EventManager EventManager = new EventManager();
-        private GridLayoutGroup gridLayoutGroup;
+        public static int SelectedDimension = 4;
+        [SerializeField]
+        private GameObject _cardPrefab;
+        private List<Card> _cards;
+        private List<Card> _openCards;
+        private List<Card> _matchedCards;
+        private List<Sprite> _cardFaces;
+        private float _cardSize;
+        private float _gridWidth, _xOffset, _yOffset;
+        private float _padding;
+        private GridLayoutGroup _gridLayoutGroup;
+
+        public EventManager GridEventManager = new EventManager();
         public CountDownAnimation CountDownAnimation;
-        private float CardSize;
-        private float GridWidth, XOffset, YOffset;
-        private float Padding;
-  
+
         void Awake()
         {
-            int dimension = SelectedDimension; // Lấy kích thước ma trận từ SelectedDimension
-            GridWidth = GetComponent<RectTransform>().rect.width;
-            Padding = 50f;
-            XOffset = YOffset = 9f;
-            CardSize = (GridWidth - (Padding * 2) - (XOffset * (dimension - 1))) / dimension;
+            int dimension = SelectedDimension;
+            _cards = new List<Card>();
+            _cardFaces = new List<Sprite>();
+            _openCards = new List<Card>(capacity:2);
+            _matchedCards = new List<Card>();
+
+            _gridWidth = GetComponent<RectTransform>().rect.width;
+            _padding = 50f;
+            _xOffset = _yOffset = 9f;
+            _cardSize = (_gridWidth - (_padding * 2) - (_xOffset * (dimension - 1))) / dimension;
+
             FormCardGrid(dimension);
             InitializeCardFaces(GameManager.Instance.SpriteCollection);
             AddCard(dimension);
@@ -43,41 +51,30 @@ namespace Assets.Scripts.Objects
             GetCard();
         }
 
-        public void ResetGrid(Action callback)
-        {
-            ShuffleCardFaces(CardFaces);
-            matchedCards.Clear();
-            for (int i = 0; i < Cards.Count; i++)
-            {
-                Cards[i].ResetCard();
-                Cards[i].SetCard(i, CardFaces[i], CardSize);
-            }
-
-            StartCoroutine(showAllCards(5, callback));
-        }
-
         void FormCardGrid(int dimension)
         {
-            if (gridLayoutGroup == null)
+            // form the grid with the given dimension
+            if (_gridLayoutGroup == null)
             {
-                gridLayoutGroup = gameObject.GetComponent<GridLayoutGroup>();
+                _gridLayoutGroup = gameObject.GetComponent<GridLayoutGroup>();
             }
 
-            gridLayoutGroup.spacing = new Vector2(XOffset, YOffset);
-            gridLayoutGroup.cellSize = new Vector2(CardSize, CardSize);
-            gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            gridLayoutGroup.constraintCount = dimension;
-            gridLayoutGroup.padding = new RectOffset((int)Padding, (int)Padding, (int)Padding, (int)Padding);
+            _gridLayoutGroup.spacing = new Vector2(_xOffset, _yOffset);
+            _gridLayoutGroup.cellSize = new Vector2(_cardSize, _cardSize);
+            _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            _gridLayoutGroup.constraintCount = dimension;
+            _gridLayoutGroup.padding = new RectOffset((int)_padding, (int)_padding, (int)_padding, (int)_padding);
         }
 
         void InitializeCardFaces(List<Sprite> spriteCollection)
         {
-            spriteCollection = ShuffleCardFaces(spriteCollection);
-            for (int times = 0; times < 2; times++) // add 2 times the same sprite
+            spriteCollection = ShuffleCardFaces(spriteCollection); // Shuffle the sprite collection
+
+            for (int times = 0; times < 2; times++) // Add 2 times the same sprite
             {
                 for (int i = 0; i < (SelectedDimension * SelectedDimension) / 2; i++)
                 {
-                    CardFaces.Add(spriteCollection[i]);
+                    _cardFaces.Add(spriteCollection[i]);
                 }
             }
         }
@@ -99,7 +96,7 @@ namespace Assets.Scripts.Objects
         {
             for (int i = 0; i < dimension * dimension; i++)
             {
-                GameObject card = Instantiate(CardPrefab, GetComponent<RectTransform>(), false);
+                GameObject card = Instantiate(_cardPrefab, GetComponent<RectTransform>(), false);
                 card.name = "Card-" + i;
             }
         }
@@ -110,10 +107,86 @@ namespace Assets.Scripts.Objects
             for (int i = 0; i < objects.Length; i++)
             {
  
-                Cards.Add(objects[i].GetComponent<Card>());
-                Cards[i].SetCard(i, CardFaces[i], CardSize);
-                Cards[i].EventManager.AddObserver(this);
+                _cards.Add(objects[i].GetComponent<Card>()); // Add the card to the list
+                _cards[i].SetCard(i, _cardFaces[i], _cardSize); // Set the card id, card front and scale
+                _cards[i].CardEventManager.AddObserver(this); // Add this Grid as an observer to each Card
             }
+        }
+
+        void CheckPair(Card firstCard, Card secondCard)
+        {
+            if (firstCard == secondCard)
+            {
+                SoundManager.Instance.PlayCardMatchSound(); // Play the card match sound
+                // Change the state of both cards to matched
+                firstCard.MatchCard();
+                secondCard.MatchCard();
+
+                // Add the matched cards to the list
+                _matchedCards.Add(firstCard);
+                _matchedCards.Add(secondCard);
+
+                GridEventManager.NotifyObservers(this, GridEventType.CardMatched); // Notify observers that a pair is matched
+
+                if (_matchedCards.Count == _cards.Count)
+                {
+                    GridEventManager.NotifyObservers(this, GridEventType.AllCardsMatched); // Notify observers that all cards are matched
+                }
+            }
+            else
+            {
+                // Close both cards if they are not matched
+                firstCard.CloseCard();
+                secondCard.CloseCard();
+                GridEventManager.NotifyObservers(this, GridEventType.CardFailed); // Notify observers that a pair is mismatched
+            }
+
+            // Clear the open cards list
+            _openCards.Clear(); 
+        }
+
+        public void ResetGrid(Action callback)
+        {
+            ShuffleCardFaces(_cardFaces);
+            _matchedCards.Clear();
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                _cards[i].ResetCard();
+                _cards[i].SetCard(i, _cardFaces[i], _cardSize);
+            }
+
+            StartCoroutine(showAllCards(5, callback));
+        }
+
+        public void OnCardFlipped(Card card)
+        {
+            if (card.State != CardStates.Visible)
+            {
+                return;
+            }
+
+            if (_openCards.Count < 2)
+            {
+                _openCards.Add(card);
+            }
+            if (_openCards.Count == 2)
+            {
+                Card firstCard = _openCards[0];
+                Card secondCard = _openCards[1];
+                CheckPair(firstCard, secondCard);
+            }
+        }
+
+        public void OnNotify(MonoBehaviour publisher, object eventType)
+        // This Grid is a Card Observer and will be notified by the Card
+        {
+            Card card = publisher as Card;
+            if (card == null)
+            {
+                Debug.LogError("GridEventManager is not a Card!");
+                return;
+            }
+            OnCardFlipped(card); // Call the OnCardFlipped function to handle the flipping card event
         }
 
         public IEnumerator showAllCards(float duration, Action callback)
@@ -121,73 +194,16 @@ namespace Assets.Scripts.Objects
             yield return new WaitForSeconds(1f);
 
             CountDownAnimation.StartCountdown((int)duration);
-            foreach (Card card in Cards)
+            foreach (Card card in _cards)
             {
                 card.AutoOpenCard();
             }
             yield return new WaitForSeconds(duration);
-            foreach (Card card in Cards)
+            foreach (Card card in _cards)
             {
                 card.AutoCloseCard();
             }
             callback?.Invoke();
-        }
-
-        void CheckPair(Card firstCard, Card secondCard)
-        {
-            if (firstCard == secondCard)
-            {
-                SoundManager.Instance.PlaySound("card-matched", 1f);
-                firstCard.MatchCard();
-                secondCard.MatchCard();
-                matchedCards.Add(firstCard);
-                matchedCards.Add(secondCard);
-                EventManager.NotifyObservers(this, GridEventType.CardMatched);
-                if (matchedCards.Count == Cards.Count)
-                {
-                    EventManager.NotifyObservers(this, GridEventType.AllCardsMatched);
-                }
-            }
-            else
-            {
-                firstCard.CloseCard();
-                secondCard.CloseCard();
-                EventManager.NotifyObservers(this, GridEventType.CardFailed);
-            }
-            OpenCards.Clear();
-        }
-
-        public void OnCardFlipped(Card card)
-        {
-            if (card.State != Card.CardState.Visible)
-            {
-                return;
-            }
-
-            if (OpenCards.Count < 2)
-            {
-                OpenCards.Add(card);
-            }
-            if (OpenCards.Count == 2)
-            {
-                Card firstCard = OpenCards[0];
-                Card secondCard = OpenCards[1];
-                CheckPair(firstCard, secondCard);
-            }
-        }
-
-        public void OnNotify(MonoBehaviour publisher, object eventType)
-        {
-            Card card = publisher as Card;
-            if (card == null)
-            {
-                Debug.LogError("EventManager is not a Card!");
-                return;
-            }
-            if (card.State == Card.CardState.Visible)
-            {
-                OnCardFlipped(card);
-            }
         }
     }
 }

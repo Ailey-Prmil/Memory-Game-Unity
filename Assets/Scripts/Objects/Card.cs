@@ -7,102 +7,118 @@ namespace Assets.Scripts.Objects
 {
     public class Card : MonoBehaviour
     {
-        public enum CardState
-        {
-            Hidden,
-            Visible,
-            Matched
-        }
-        public int id;
-        public CardAnimation cardAnimation;
-        public RectTransform parentRect;
-        public SpriteRenderer spriteRenderer;
-        private CardState state;
+        private int _id;
+        private CardAnimation _cardAnimation;
+        private RectTransform _parentRect;
+        private SpriteRenderer _spriteRenderer;
+        private CardStates _state;
 
-        public CardState State
+        public EventManager CardEventManager = new();
+        public CardStates State
         {
-            get { return state; }
+            get => _state;
             private set
             {
-                state = value;
-                EventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
+                _state = value;
+                CardEventManager.NotifyObservers(this, CardEventTypes.CardFlipped);
             }
         }
-        public EventManager EventManager = new EventManager();
-
+        
         private void Awake()
         {
-            cardAnimation = GetComponent<CardAnimation>();
-            parentRect = GetComponent<RectTransform>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            state = CardState.Hidden;
-            cardAnimation.OnCardFlipped += OnCardFlippedHandler;
-        }
-        public void ResetCard()
-        {
-            state = CardState.Hidden; // not trigger observer
-            AutoCloseCard();
+            // Get components and set default state
+            _cardAnimation = GetComponent<CardAnimation>();
+            _parentRect = GetComponent<RectTransform>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _state = CardStates.Hidden;
+            _cardAnimation.OnCardFlipped += OnCardFlippedHandler; // Subscribe to card flip event (in CardAnimation)
         }
 
         private void OnCardFlippedHandler()
         {
-            if (cardAnimation.faceUp)
+            // Change card state based on card animation
+            if (_cardAnimation.FaceUp)
             {
-                State = CardState.Visible;
+                State = CardStates.Visible;
             }
             else
             {
-                State = CardState.Hidden;
+                State = CardStates.Hidden;
+            }
+        }
+
+        private void OnMouseDown()
+        {
+            // Detect mouse click on certain cards
+            if (GameManager.Instance.IsGameRunning) OpenCard(); // Only allow open card when game is running
+        }
+
+
+        public void SetCard(int id, Sprite cardFront, float cellSize)
+        {
+            // Set card id, card front and scale
+            this._id = id;
+            _cardAnimation.CardFront = cardFront;
+            float scale = cellSize / _spriteRenderer.sprite.rect.size.x * _spriteRenderer.sprite.pixelsPerUnit;
+            _parentRect.localScale = new Vector3(scale, scale, 1);
+        }
+
+        public void ResetCard()
+        {
+            // Reset card state
+            // Do not state of card when reset (using AutoFlipCard instead of FlipCard)
+            _state = CardStates.Hidden;
+            AutoCloseCard();
+        }
+
+        public void OpenCard()
+        {
+            if (!_cardAnimation.FaceUp)
+            {
+                _cardAnimation.FlipCard();
             }
         }
 
         public void AutoOpenCard()
         {
-            if (!cardAnimation.faceUp)
+            if (!_cardAnimation.FaceUp)
             {
-                cardAnimation.AutoFlipCard();
+                _cardAnimation.AutoFlipCard();
             }
         }
 
-
         public void CloseCard()
         {
-            if (cardAnimation.faceUp)
+            if (_cardAnimation.FaceUp)
             {
-                cardAnimation.FlipCard();
+                _cardAnimation.FlipCard();
             }
         }
 
         public void AutoCloseCard()
         {
-            if (cardAnimation.faceUp)
+            if (_cardAnimation.FaceUp)
             {
-                cardAnimation.FlipCard();
+                _cardAnimation.AutoFlipCard();
             }
         }
 
         public void MatchCard()
         {
-            State = CardState.Matched;
+            State = CardStates.Matched;
         }
+        
 
+        // Compare 2 cards
         public static bool operator == (Card card1, Card card2)
         {
             if (ReferenceEquals(card1, null) || ReferenceEquals(card2, null)) { return false; }
-            return card1.cardAnimation.CardFront == card2.cardAnimation.CardFront;
+            return card1._cardAnimation.CardFront == card2._cardAnimation.CardFront;
         }
 
         public static bool operator !=(Card card1, Card card2)
         {
             return !(card1 == card2);
-        }
-
-        public void SetCard(int id, Sprite cardFront, float cellSize)
-        {
-            this.id = id;
-            cardAnimation.CardFront = cardFront;
-            float scale = cellSize / spriteRenderer.sprite.rect.size.x * spriteRenderer.sprite.pixelsPerUnit;
-            parentRect.localScale = new Vector3(scale, scale, 1);
         }
 
     }

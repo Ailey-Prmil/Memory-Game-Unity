@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Managers
 {
     public class EventManager:ISubject
+    // Event manager manages the observers and notifies them of any changes in the game
     {
         private List<IObserver> observers = new List<IObserver>();
 

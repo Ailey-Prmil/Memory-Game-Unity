@@ -16,8 +16,8 @@ namespace Assets.Scripts.Managers
         public Sprite soundOnIcon;      
         public Sprite soundOffIcon;     
 
-        private bool isMusicOn = true;  
-        private bool isSoundOn = true;
+        private bool isMusicOn;  
+        private bool isSoundOn;
 
         protected override void Awake()
         {
@@ -35,11 +35,12 @@ namespace Assets.Scripts.Managers
 
         protected override void Start()
         {
+            isMusicOn = SoundManager.Instance.musicEnabled;
+            isSoundOn = SoundManager.Instance.soundEnabled;
             musicButton.onClick.AddListener(ToggleMusic);
             soundButton.onClick.AddListener(ToggleSound);
             UpdateIcons();
             base.Start();
-
         }
 
         void ToggleMusic()
@@ -53,7 +54,6 @@ namespace Assets.Scripts.Managers
             {
                 SoundManager.Instance.StopBackgroundMusic();
             }
-
             musicIcon.sprite = isMusicOn ? musicOnIcon : musicOffIcon;
         }
 
@@ -68,7 +68,6 @@ namespace Assets.Scripts.Managers
             {
                 SoundManager.Instance.EnableSound();
             }
-
             soundIcon.sprite = isSoundOn ? soundOnIcon : soundOffIcon;
         }
 

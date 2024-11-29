@@ -13,19 +13,20 @@ namespace Assets.Scripts.Managers
     {
         public List<Sprite> SpriteCollection;
         public static GameManager Instance { get; private set; }
-        private Score score;
-        private CardGrid cardGrid;
-        private ProgressTrack progressTrack;
-        private Streak streak;
+
+        private Score _score;
+        private CardGrid _cardGrid;
+        private ProgressTrack _progressTrack;
+        private Streak _streak;
+
         public PopUpTextAnimation PopUpText;
         public ResultPanel ResultPanel;
         public bool IsGameRunning;
-        public ParticleSystem sparkleEffect;
+        public ParticleSystem SparkleEffect;
 
 
         void Awake()
         {
-        
             if (Instance == null)
             {
                 Instance = this;
@@ -36,35 +37,33 @@ namespace Assets.Scripts.Managers
             }
 
             IsGameRunning = false;
+
             SpriteCollection = new List<Sprite>(Resources.LoadAll<Sprite>("Sprites/CardSprites"));
             Sprite backSprite = SpriteCollection.Find(sprite => sprite.name == "Cardback");
             SpriteCollection.Remove(backSprite);
 
-            score = FindObjectOfType<Score>();
-
-            progressTrack = FindObjectOfType<ProgressTrack>();
-
-
-            streak = Streak.CreateInstance();
-
-            cardGrid = FindObjectOfType<CardGrid>();
+            _score = FindObjectOfType<Score>();
+            _progressTrack = FindObjectOfType<ProgressTrack>();
+            _streak = Streak.CreateInstance();
+            _cardGrid = FindObjectOfType<CardGrid>();
         }
 
         void Start()
         {
             OnGameStart();
-            cardGrid.EventManager.AddObserver(this); // Be an observer to CardGrid
+            _cardGrid.GridEventManager.AddObserver(this); // Be an observer to CardGrid
         }
 
         public void OnGameStart()
         {
             IsGameRunning = false;
-            progressTrack.ResetProgress(CardGrid.SelectedDimension);
-            score.ResetScore();
-            streak.ResetStreak();
-            streak.ResetMaxStreak();
-            cardGrid.ResetGrid(() => { IsGameRunning = true;});
-            
+
+            // Reset all game objects
+            _progressTrack.ResetProgress(CardGrid.SelectedDimension);
+            _score.ResetScore();
+            _streak.ResetStreak();
+            _streak.ResetMaxStreak();
+            _cardGrid.ResetGrid(() => { IsGameRunning = true;});
         }
 
         public void OnGamePause()
@@ -80,23 +79,24 @@ namespace Assets.Scripts.Managers
         public void OnGameOver(bool isWin)
         {
             IsGameRunning = false;
-            GameResult result = new GameResult(System.DateTime.Now, score.GetScores(), streak.GetMaxStreakCount());
+
+            GameResult result = new GameResult(System.DateTime.Now, _score.GetScores(), _streak.GetMaxStreakCount());
             ResultDataManager.Instance.AddResultData(result, CardGrid.SelectedDimension);
-            ResultPanel.ShowResultPanel(isWin, score.GetScores(), streak.GetMaxStreakCount());
+            ResultPanel.ShowResultPanel(isWin, _score.GetScores(), _streak.GetMaxStreakCount());
         }
 
         public void OnMatchedPair()
         {
             MemeManager.Instance.ShowRandomWinMeme();
-            score.IncrementScore();
-            progressTrack.IncrementProgress();
-            streak.IncrementStreak();
+            _score.IncrementScore();
+            _progressTrack.IncrementProgress();
+            _streak.IncrementStreak();
         }
         public void OnMismatchedPair()
         {
             MemeManager.Instance.ShowRandomFailMeme();
-            score.ChangeUnitScore();
-            streak.ResetStreak();
+            _score.ChangeUnitScore();
+            _streak.ResetStreak();
         }
 
         public void OnNotify(MonoBehaviour publisher, object eventType)
@@ -104,13 +104,13 @@ namespace Assets.Scripts.Managers
             if (eventType is GridEventType.CardMatched) OnMatchedPair();
             else if (eventType is GridEventType.CardFailed) OnMismatchedPair();
 
-            int streakCount = streak.GetStreakCount();
-            if (streakCount > 1) score.AddBonus(streakCount);
+            int streakCount = _streak.GetStreakCount();
+            if (streakCount > 1) _score.AddBonus(streakCount);
             if (streakCount % 2 == 0 && streakCount > 0)
             {
-                SoundManager.Instance.PlaySound("combo", 1f);
+                SoundManager.Instance.PlayComboSound();
                 PopUpText.ShowText($"Combo {streakCount}");
-                sparkleEffect.Play();
+                SparkleEffect.Play();
             }
 
             if (eventType is GridEventType.AllCardsMatched)

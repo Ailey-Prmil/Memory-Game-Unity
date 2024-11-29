@@ -8,50 +8,41 @@ namespace Assets.Scripts.Animations
     public class CardAnimation : MonoBehaviour
     {
         public event Action OnCardFlipped;
-        private SpriteRenderer rend;
-        private bool coroutineAllowed;
-        public bool faceUp { get; set; }
+        private SpriteRenderer _rend;
+        private bool _coroutineAllowed;
+        public bool FaceUp { get; set; }
         public Sprite CardBack, CardFront;
 
         void Awake()
         {
-            rend = GetComponent<SpriteRenderer>();
-            rend.sprite = CardBack;
-            coroutineAllowed = true;
-            faceUp = false;
+            _rend = GetComponent<SpriteRenderer>();
+            _rend.sprite = CardBack;
+            _coroutineAllowed = true;
+            FaceUp = false;
         }
 
-        private void OnMouseDown() // Detects click directly on the card
+        public void FlipCard()
         {
-            if (GameManager.Instance.IsGameRunning) OpenCard(); // only allow open card when game is running
-        }
-
-        public void FlipCard() // Detects click on the button
-        {
-            if (coroutineAllowed)
+            if (_coroutineAllowed)
             {
-                StartCoroutine(RotateCard(() => { faceUp = !faceUp; OnCardFlipped?.Invoke(); }));
+                StartCoroutine(RotateCard(() => { FaceUp = !FaceUp; OnCardFlipped?.Invoke(); }));
             }
         }
 
         public void AutoFlipCard()
+        // Auto flip card happens when the game is start where there is no need to change the card state
+        // Avoid confusing with the Awake function where state is default to be hidden
         {
-            StartCoroutine(RotateCard(() => { faceUp = !faceUp;}));
+            StartCoroutine(RotateCard(() => { FaceUp = !FaceUp;}));
         }
 
-        public void OpenCard()
-        {
-            if (faceUp == false)
-            {
-                FlipCard();
-            }
-        }
 
-        private IEnumerator RotateCard(Action callback)
+        private IEnumerator RotateCard(Action callback) 
         {
-            coroutineAllowed = false;
-            SoundManager.Instance.PlaySound("card-flipped", 0.3f);
-            if (!faceUp)
+            // Rotate card to show the front or back side
+            _coroutineAllowed = false;
+            SoundManager.Instance.PlayCardFlipSound();
+            if (!FaceUp)
             {
                 // Open card
                 for (float i = 0f; i <= 180f; i += 10f)
@@ -59,7 +50,7 @@ namespace Assets.Scripts.Animations
                     transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
                     if (i == 90f)
                     {
-                        rend.sprite = CardFront;
+                        _rend.sprite = CardFront;
                     }
                     yield return new WaitForSeconds(0.03f);
                 }
@@ -72,12 +63,12 @@ namespace Assets.Scripts.Animations
                     transform.rotation = UnityEngine.Quaternion.Euler(0f, i, 0f);
                     if (i == 90f)
                     {
-                        rend.sprite = CardBack;
+                        _rend.sprite = CardBack;
                     }
                     yield return new WaitForSeconds(0.03f);
                 }
             }
-            coroutineAllowed = true;
+            _coroutineAllowed = true;
             callback?.Invoke();
         }
 

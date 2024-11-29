@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,8 +12,8 @@ namespace Assets.Scripts.Managers
         public AudioSource BackgroundMusic;
         private AudioSource audioSource;
         private List<AudioClip> audioClips;
-        private bool soundEnabled;
-        private bool musicEnabled;
+        public bool soundEnabled;
+        public bool musicEnabled;
 
         void Awake()
         {
@@ -25,8 +26,6 @@ namespace Assets.Scripts.Managers
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 soundEnabled = PlayerPrefs.GetInt("soundEnabled", 1) == 1;
                 musicEnabled = PlayerPrefs.GetInt("musicEnabled", 1) == 1;
-
-
             }
             else
             {
@@ -38,10 +37,38 @@ namespace Assets.Scripts.Managers
         {
             AddButtonClickSound();
         }
+
         void Start()
         {
-            if (musicEnabled) PlayBackgroundMusic();
+            if (musicEnabled)
+            {
+                PlayBackgroundMusic();
+            }
+            else
+            {
+                StopBackgroundMusic();
+            }
         }
+
+        private void PlaySound(string audioName, float volume)
+        {
+            if (soundEnabled)
+            {
+                AudioClip audioClip = audioClips.Find(clip => clip.name == audioName);
+                audioSource.volume = volume;
+                audioSource.PlayOneShot(audioClip);
+            }
+        }
+
+        private void AddButtonClickSound()
+        {
+            List<Button> buttons = new List<Button>(FindObjectsOfType<Button>());
+            foreach (Button button in buttons)
+            {
+                button.onClick.AddListener(() => PlaySound("button-clicked",1f));
+            }
+        }
+
 
         public void PlayBackgroundMusic()
         {
@@ -55,25 +82,43 @@ namespace Assets.Scripts.Managers
             musicEnabled = false;
         }
 
-        public void AddButtonClickSound()
+        public void PlayWinSound()
         {
-            List<Button> buttons = new List<Button>(FindObjectsOfType<Button>());
-            foreach (Button button in buttons)
-            {
-                button.onClick.AddListener(() => PlaySound("button-clicked",1f));
-            }
+            PlaySound("game-success", 1f);
+        }
+
+        public void PlayLoseSound()
+        {
+            PlaySound("game-failed", 1f);
+        }
+
+        public void PlayCardFlipSound()
+        {
+            PlaySound("card-flipped", 0.3f);
+        }
+
+        public void PlayCardMatchSound()
+        {
+            PlaySound("card-matched", 1f);
+        }
+
+        public void PlayComboSound()
+        {
+            PlaySound("combo", 1f);
+        }
+
+        public void PlayStartSound()
+        {
+            PlaySound("game-start", 1f);
+        }
+
+        public void PlayCounterSound()
+        {
+            PlaySound("counter", 1f);
         }
 
 
-        public void PlaySound(string audioName, float volume)
-        {
-            if (soundEnabled)
-            {
-                AudioClip audioClip = audioClips.Find(clip => clip.name == audioName);
-                audioSource.volume = volume;
-                audioSource.PlayOneShot(audioClip);
-            }
-        }
+        
 
         public void DisableSound()
         {
@@ -83,6 +128,7 @@ namespace Assets.Scripts.Managers
         {
             soundEnabled = true;
         }
+
 
         void OnDestroy()
         { 

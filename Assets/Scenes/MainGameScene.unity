@@ -2334,7 +2334,7 @@ MonoBehaviour:
   PopUpText: {fileID: 706268562}
   ResultPanel: {fileID: 684658792}
   IsGameRunning: 0
-  sparkleEffect: {fileID: 4679454745719949179}
+  SparkleEffect: {fileID: 4679454745719949179}
 --- !u!114 &1020913887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,7 +3471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e896f1650517f78448fc6790f2eda929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardPrefab: {fileID: 9144906139821780330, guid: 06933c19971aa4a46b09b9d1a1e24a2f, type: 3}
+  _cardPrefab: {fileID: 9144906139821780330, guid: 06933c19971aa4a46b09b9d1a1e24a2f, type: 3}
   CountDownAnimation: {fileID: 1113604410}
 --- !u!1 &1396045281
 GameObject:
