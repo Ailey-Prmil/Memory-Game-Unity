@@ -6,7 +6,7 @@ A simple but challenging game perfect for break time while insisting in powering
 - [Highlight Features](#highlight-features)
 - [Installation](#installation)
 - [Development](#development)
-- [Team]()
+- [Team](#team)
 - [Acknowledgements](#acknowledgements)
 ## Demo
 ### Main Menu Scene
